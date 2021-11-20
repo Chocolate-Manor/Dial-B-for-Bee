@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Shooting : MonoBehaviour
 {
 
-    public GameObject projectile;
-
+     public GameObject firefly;
+     public GameObject ladybug;
+     
     [SerializeField]
     private GameObject flashlight;
     
@@ -22,7 +24,13 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            GameObject bullet = Instantiate(projectile, transform.position + transform.up*offset, Quaternion.identity) as GameObject;
+            GameObject bullet = Instantiate(firefly, transform.position + transform.up*offset, Quaternion.identity) as GameObject;
+            bullet.transform.rotation = transform.rotation;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            GameObject bullet = Instantiate(ladybug, transform.position + transform.up*offset, Quaternion.identity) as GameObject;
             bullet.transform.rotation = transform.rotation;
         }
 

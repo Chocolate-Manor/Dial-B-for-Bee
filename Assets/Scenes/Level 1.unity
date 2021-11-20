@@ -123,78 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &484967789
+--- !u!1 &484967789 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 484967789, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
+  m_PrefabInstance: {fileID: 810548254}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 484967790}
-  - component: {fileID: 484967791}
-  m_Layer: 0
-  m_Name: Freeform Light 2D
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &484967790
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 484967789}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: -0.052, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 868125042}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &484967791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 484967789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LightType: 3
-  m_BlendStyleIndex: 0
-  m_FalloffIntensity: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 0000000087f63d2f
-  m_LightCookieSprite: {fileID: 0}
-  m_UseNormalMap: 0
-  m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 1
-  m_ShadowIntensity: 0
-  m_ShadowVolumeIntensity: 0
-  m_PointLightInnerAngle: 45
-  m_PointLightOuterAngle: 189
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 9.65
-  m_PointLightDistance: 1.64
-  m_PointLightQuality: 1
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &698339277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,26 +1047,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 868125044, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1845742140}
+    - target: {fileID: 868125045, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
+      propertyPath: firefly
+      value: 
+      objectReference: {fileID: 3499596081660365745, guid: 294d81aba2ffdb722ab7a2f6dbe0d98c, type: 3}
+    - target: {fileID: 868125045, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
+      propertyPath: ladybug
+      value: 
+      objectReference: {fileID: 5802382168588440715, guid: 8756bef7a9a0e1811a75172663e73f1f, type: 3}
+    - target: {fileID: 868125045, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
+      propertyPath: flashlight
+      value: 
+      objectReference: {fileID: 484967789}
     - target: {fileID: 5466132100793970139, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
       propertyPath: m_Name
       value: B
       objectReference: {fileID: 0}
-    - target: {fileID: 5466132100793970141, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5466132100793970141, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5466132100793970141, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 792589959
-      objectReference: {fileID: 0}
-    - target: {fileID: 5466132100793970141, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 5466132100793970142, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1185,55 +1118,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5466132100793970139, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
   m_PrefabInstance: {fileID: 810548254}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &868125042 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5466132100793970142, guid: 338d53f1462eac239a24f4d83ffe4b3f, type: 3}
-  m_PrefabInstance: {fileID: 810548254}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &868125044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868125038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 0000000087f63d2f
-  m_ShapePath:
-  - {x: -0.07722139, y: -0.11980887, z: -2.5019775e-10}
-  - {x: 0.081861615, y: -0.120449096, z: -0.0000002200209}
-  - {x: 0.18054068, y: -0.055877957, z: -0.000000010219829}
-  - {x: 0.1772523, y: 0.00010907704, z: -0.000000025024518}
-  - {x: 0.1370396, y: 0.038142297, z: 0.00000006295534}
-  - {x: -0.1416319, y: 0.038680196, z: -0.0000002195809}
-  - {x: -0.17829514, y: 0.0031561616, z: -0.00000008877738}
-  - {x: -0.17834324, y: -0.058458403, z: -0.000000019152788}
-  m_ShapePathHash: 1644795684
-  m_Mesh: {fileID: 1845742140}
-  m_InstanceId: -78756
---- !u!114 &868125045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868125038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7551ea3cec990a2a4903e6e3150266c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 3499596081660365745, guid: 294d81aba2ffdb722ab7a2f6dbe0d98c, type: 3}
-  offset: 1
 --- !u!1 &1062209511
 GameObject:
   m_ObjectHideFlags: 0
