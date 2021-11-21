@@ -9,8 +9,7 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 10;
   
     [SerializeField]
-    private Rigidbody2D rb;	
-
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +25,6 @@ public class CharacterMovement : MonoBehaviour
         // orient the transform towards mouse
         var dir = new Vector2(mouseGameCoords.x - transform.position.x, mouseGameCoords.y - transform.position.y);
         transform.up = dir;
-
     }
 
     private void FixedUpdate()

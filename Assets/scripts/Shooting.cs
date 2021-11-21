@@ -6,8 +6,13 @@ using UnityEngine.Serialization;
 public class Shooting : MonoBehaviour
 {
 
-     public GameObject firefly;
-     public GameObject ladybug;
+    [SerializeField]
+    private int fireFlyCount = 5;
+    [SerializeField]
+    private int ladyBugCount = 5;
+    
+    public GameObject firefly;
+    public GameObject ladybug;
      
     [SerializeField]
     private GameObject flashlight;
@@ -23,15 +28,24 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && fireFlyCount > 0)
+        {
+            fireFlyCount--;
             GameObject bullet = Instantiate(firefly, transform.position + transform.up*offset, Quaternion.identity) as GameObject;
             bullet.transform.rotation = transform.rotation;
+        } else if (fireFlyCount <= 0)
+        {
+            Debug.Log("You are out of fireflies");
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1) && ladyBugCount > 0)
         {
+            ladyBugCount--;
             GameObject bullet = Instantiate(ladybug, transform.position + transform.up*offset, Quaternion.identity) as GameObject;
             bullet.transform.rotation = transform.rotation;
+        } else if (ladyBugCount <= 0)
+        {
+            Debug.Log("You are out of ladybugs");
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

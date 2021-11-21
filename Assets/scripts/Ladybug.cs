@@ -5,20 +5,25 @@ using UnityEngine;
 
 public class Ladybug : MonoBehaviour
 {
-    [SerializeField]
-    private Rigidbody2D rb;
+    [SerializeField] private float lifeSpan = 500;
+    // Destroy(gameObject, lifeSpan);
+
+    private float initializationTime;
+
+    [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private float speed;
+
     // Start is called before the first frame update
     void Start()
     {
-        rb.AddForce(transform.up*speed);        
+        initializationTime = Time.timeSinceLevelLoad;
+        rb.AddForce(transform.up * speed);
+        Destroy(gameObject, lifeSpan);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // rb.velocity = transform.up * speed;
     }
-
 }
