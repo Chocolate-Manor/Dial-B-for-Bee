@@ -10,10 +10,13 @@ public class Shooting : MonoBehaviour
     private int fireFlyCount = 5;
     [SerializeField]
     private int ladyBugCount = 5;
+    [SerializeField] 
+    private int butterflyCount = 5;
     
     public GameObject firefly;
     public GameObject ladybug;
-     
+    public GameObject butterfly;
+    
     [SerializeField]
     private GameObject flashlight;
     
@@ -47,7 +50,26 @@ public class Shooting : MonoBehaviour
         {
             Debug.Log("You are out of ladybugs");
         }
+        
+        if (Input.GetKeyDown(KeyCode.B) && butterflyCount > 0)
+        {
+            butterflyCount--;
+            GameObject bullet = Instantiate(butterfly, transform.position + transform.up*offset, Quaternion.identity) as GameObject;
+            bullet.transform.rotation = transform.rotation;
+        } else if (butterflyCount <= 0)
+        {
+            Debug.Log("You are out of ladybugs");
+        }
 
+        //flashlight
+        flashlightControl();
+    }
+    
+    /// <summary>
+    /// Controls the flashlight. Put in update.
+    /// </summary>
+    private void flashlightControl()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             flashlight.SetActive(true);
