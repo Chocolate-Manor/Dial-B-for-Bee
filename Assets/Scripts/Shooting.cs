@@ -1,74 +1,50 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Shooting : MonoBehaviour
 {
+    
+    // list of available bugs and the amount of them in the inventory
+    public List<GameObject> bugs;
+    public List<int> bugCounts;
 
-    [SerializeField]
-    private int fireFlyCount = 5;
-    [SerializeField]
-    private int ladyBugCount = 5;
-    [SerializeField] 
-    private int butterflyCount = 5;
-    
-    public GameObject firefly;
-    public GameObject ladybug;
-    public GameObject butterfly;
-    
-    [SerializeField]
-    private GameObject flashlight;
-    
+    // index of currently selected bugg
+    private int _selectedBug;
+
+    [SerializeField] private GameObject flashlight;
+
     public float offset = 1;
+
     // Start is called before the first frame update
     void Start()
     {
         flashlight.SetActive(false);
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && fireFlyCount > 0)
-        {
-            fireFlyCount--;
-            GameObject bullet = Instantiate(firefly, transform.position + transform.up*offset, Quaternion.identity) as GameObject;
-            bullet.transform.rotation = transform.rotation;
-        } else if (fireFlyCount <= 0)
-        {
-            Debug.Log("You are out of fireflies");
-        }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && ladyBugCount > 0)
+        // update selected bugg
+        InventoryControl();
+
+        // shoot selected bugg if there is inventory for it
+        if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
         {
-            ladyBugCount--;
-            GameObject bullet = Instantiate(ladybug, transform.position + transform.up*offset, Quaternion.identity) as GameObject;
+            bugCounts[_selectedBug] -= 1;
+            var bullet = Instantiate(bugs[_selectedBug], transform.position + transform.up * offset, Quaternion.identity) as GameObject;
             bullet.transform.rotation = transform.rotation;
-        } else if (ladyBugCount <= 0)
-        {
-            Debug.Log("You are out of ladybugs");
-        }
-        
-        if (Input.GetKeyDown(KeyCode.B) && butterflyCount > 0)
-        {
-            butterflyCount--;
-            GameObject bullet = Instantiate(butterfly, transform.position + transform.up*offset, Quaternion.identity) as GameObject;
-            bullet.transform.rotation = transform.rotation;
-        } else if (butterflyCount <= 0)
-        {
-            Debug.Log("You are out of ladybugs");
         }
 
         //flashlight
-        flashlightControl();
+        FlashlightControl();
     }
-    
+
     /// <summary>
     /// Controls the flashlight. Put in update.
     /// </summary>
-    private void flashlightControl()
+    private void FlashlightControl()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -78,6 +54,30 @@ public class Shooting : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             flashlight.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Read scrollbar to update selected bug
+    /// </summary>
+    private void InventoryControl()
+    {
+        
+        // Check mouse wheel to change selected bugg
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        {
+            if (_selectedBug >= bugs.Count - 1)
+                _selectedBug = 0;
+            else
+                _selectedBug += 1;
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            if (_selectedBug <= 0)
+                _selectedBug = bugs.Count - 1;
+            else
+                _selectedBug -= 1;
         }
     }
 }
