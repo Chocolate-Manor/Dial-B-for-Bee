@@ -67,17 +67,20 @@ public class Shooting : MonoBehaviour
     
     /// <summary>
     /// Controls the flashlight. Put in update.
+    /// Also set if flashlight is on in game manager. 
     /// </summary>
     private void flashlightControl()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             flashlight.SetActive(true);
+            GameManager.instance.flashlightOn = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             flashlight.SetActive(false);
+            GameManager.instance.flashlightOn = false;
         }
     }
 }
