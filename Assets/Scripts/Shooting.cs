@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class Shooting : MonoBehaviour
     public List<Sprite> bugSprites;
 
     // the text object for amount of bugs
-    public Text bugCountText;
+    public TextMeshProUGUI bugCountText;
     public Image selectedBugImg;
 
     // index of currently selected bugg
