@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
@@ -7,6 +8,10 @@ public class Shooting : MonoBehaviour
     // list of available bugs and the amount of them in the inventory
     public List<GameObject> bugs;
     public List<int> bugCounts;
+
+    // the text object for amount of bugs
+    public Text bugCountText;
+    public Text selectedBugText;
 
     // index of currently selected bugg
     private int _selectedBug;
@@ -28,6 +33,9 @@ public class Shooting : MonoBehaviour
 
         // update selected bugg
         InventoryControl();
+       
+        // update inventory UI 
+        InventoryUIControl();
 
         // shoot selected bugg if there is inventory for it
         if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
@@ -79,5 +87,11 @@ public class Shooting : MonoBehaviour
             else
                 _selectedBug -= 1;
         }
+    }
+    
+    private void InventoryUIControl()
+    {
+        bugCountText.text = bugCounts[_selectedBug].ToString();
+        selectedBugText.text = bugs[_selectedBug].ToString();
     }
 }
