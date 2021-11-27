@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    [SerializeField]
-    private Transform rayStart;
-
-    [SerializeField] 
-    private Transform turretHead;
+    [SerializeField] private Transform rayStart;
+    [SerializeField] public LineRenderer m_lineRenderer;
+    
+    [SerializeField] private Transform turretHead;
 
     [SerializeField] private Animator turretAnimator;
+
+    private void Start()
+    {
+        m_lineRenderer.useWorldSpace = true;
+        m_lineRenderer.enabled = false;
+    }
+    
     private void OnTriggerStay2D(Collider2D other)
     {
         //if player enter line of sight, and more than one light is illuminating the player, kill the player. 
@@ -19,11 +25,16 @@ public class Turret : MonoBehaviour
         {
             if (NotObstructed(other) && GameManager.instance.IsIlluminateed())
             {
+                m_lineRenderer.enabled = true;
+                m_lineRenderer.SetPosition(0, rayStart.position);
+                m_lineRenderer.SetPosition(1, other.transform.position);
                 Debug.Log("You are hit!");
                 turretAnimator.enabled = false;
                 turretHead.up = (other.transform.position - turretHead.transform.position) * -1.0f;
-                
-                GameManager.instance.GameOver();
+            }
+            else
+            {
+                m_lineRenderer.enabled = false;
             }
         }
     }
