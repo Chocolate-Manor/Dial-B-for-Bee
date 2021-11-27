@@ -8,10 +8,11 @@ public class Shooting : MonoBehaviour
     // list of available bugs and the amount of them in the inventory
     public List<GameObject> bugs;
     public List<int> bugCounts;
+    public List<Sprite> bugSprites;
 
     // the text object for amount of bugs
     public Text bugCountText;
-    public Text selectedBugText;
+    public Image selectedBugImg;
 
     // index of currently selected bugg
     private int _selectedBug;
@@ -92,6 +93,6 @@ public class Shooting : MonoBehaviour
     private void InventoryUIControl()
     {
         bugCountText.text = bugCounts[_selectedBug].ToString();
-        selectedBugText.text = bugs[_selectedBug].ToString();
+        selectedBugImg.sprite = bugSprites[_selectedBug];
     }
 }
