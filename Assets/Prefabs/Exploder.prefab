@@ -124,6 +124,7 @@ MonoBehaviour:
   explosionParticle: {fileID: 7840044633106797368}
   light: {fileID: 7840044632560311151}
   ani: {fileID: 7840044633106797369}
+  explosionSound: {fileID: 8300000, guid: 8c0d1c6d247692244b8f9fe251742b10, type: 3}
 --- !u!58 &7840044633106797350
 CircleCollider2D:
   m_ObjectHideFlags: 0
