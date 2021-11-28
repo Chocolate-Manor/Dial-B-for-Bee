@@ -68,6 +68,5 @@ public class GameManager : MonoBehaviour
     public void PlaySoundEffect(AudioClip clip)
     {
         mainAudioSource.PlayOneShot(clip);
-        Debug.Log("Sound played!");
     }
 }
