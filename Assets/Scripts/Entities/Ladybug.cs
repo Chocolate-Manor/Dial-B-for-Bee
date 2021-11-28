@@ -26,6 +26,7 @@ public class Ladybug : MonoBehaviour
         //explode it after lifespan. 
         explosion = Instantiate(exploder).GetComponent<Explosion>();
         explosion.Explode(lifeSpan, gameObject);
+        Destroy(gameObject, lifeSpan + 0.1f);
     }
 
     

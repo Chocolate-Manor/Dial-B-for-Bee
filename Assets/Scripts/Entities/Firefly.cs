@@ -23,6 +23,6 @@ public class Firefly : MonoBehaviour, IDamagable
 
     public void Damage()
     {
-        Destroy(this.gameObject); 
+        Destroy(gameObject); 
     }
 }

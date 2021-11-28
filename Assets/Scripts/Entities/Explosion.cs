@@ -10,16 +10,21 @@ public class Explosion : MonoBehaviour
     [SerializeField] private ParticleSystem explosionParticle;
     [SerializeField] private GameObject light;
     [SerializeField] private Animator ani;
+
     private void Start()
     {
-        explosionPos = transform.position;
+        //Destroy itself after a set number of seconds
+        Destroy(gameObject, 15);
     }
-
+    
+    /// <summary>
+    /// Find all enemies in the circle
+    /// </summary>
     public void Explode()
     {
         ani.SetTrigger("Explode");
         explosionParticle.Play();
-        Collider2D[] collider2Ds =  Physics2D.OverlapCircleAll(explosionPos, explosionArea.radius);
+        Collider2D[] collider2Ds =  Physics2D.OverlapCircleAll(transform.position, explosionArea.radius);
         foreach (Collider2D other in collider2Ds)
         {
             IDamagable enemy = other.GetComponentInChildren<IDamagable>();
@@ -29,19 +34,23 @@ public class Explosion : MonoBehaviour
             }
         }
     }
-
+    
+    /// <summary>
+    /// Explode the object in question after some time
+    /// </summary>
+    /// <param name="time"></param>
+    /// <param name="obj"></param>
+    /// <returns></returns>
     IEnumerator ExplodeAfterTime(float time, GameObject obj)
     {
-        transform.position = obj.transform.position;
         yield return new WaitForSeconds(time);
+        transform.position = obj.transform.position;
         Explode();
-        Destroy(obj);
-        yield return new WaitForSeconds(1f);
-        Destroy(this);
     }
     
     /// <summary>
-    /// Overload method to explode after a certain time. 
+    /// Overload method, public
+    /// Called when want to explode a certain object after a certain time.  
     /// </summary>
     /// <param name="time"></param>
     public void Explode(float time, GameObject obj)
