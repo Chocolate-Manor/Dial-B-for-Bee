@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         CheckInstance(); //avoid duplicates
         lightsYouAreIlluminatedBy = new List<Collider2D>();
         flashlightOn = false;
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
 
     }
 
