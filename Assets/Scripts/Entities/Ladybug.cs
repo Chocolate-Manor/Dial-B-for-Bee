@@ -10,6 +10,8 @@ public class Ladybug : MonoBehaviour
 
     private float initializationTime;
 
+    [SerializeField] private Explosion explosion;
+
     [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private float speed;
@@ -19,7 +21,9 @@ public class Ladybug : MonoBehaviour
     {
         initializationTime = Time.timeSinceLevelLoad;
         rb.AddForce(transform.up * speed);
-        Destroy(gameObject, lifeSpan);
+        
+        //explode it after lifespan. 
+        explosion.Explode(lifeSpan, gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
