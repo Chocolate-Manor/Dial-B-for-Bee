@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Firefly : MonoBehaviour, IDamagable
+public class Firefly : Bug, IDamagable
 {
 
     [SerializeField]
@@ -12,7 +12,7 @@ public class Firefly : MonoBehaviour, IDamagable
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.name = "Firefly";
     }
 
     // Update is called once per frame
@@ -24,5 +24,15 @@ public class Firefly : MonoBehaviour, IDamagable
     public void Damage()
     {
         Destroy(gameObject); 
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            B b = other.gameObject.GetComponent<B>();
+            PickMeUp(b);
+            Destroy(gameObject);
+        }
     }
 }
