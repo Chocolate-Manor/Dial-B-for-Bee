@@ -7,7 +7,8 @@ public class Butterfly : MonoBehaviour, IProjectile
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
-
+    [SerializeField] private AudioClip knifeHitSound;
+    
     private bool hasHit;
 
     // Start is called before the first frame update
@@ -34,6 +35,8 @@ public class Butterfly : MonoBehaviour, IProjectile
             Destroy(rb);
             //make it stick
             transform.parent = other.transform;
+            //play sound
+            GameManager.instance.PlaySoundEffect(knifeHitSound);
         
     }
 
