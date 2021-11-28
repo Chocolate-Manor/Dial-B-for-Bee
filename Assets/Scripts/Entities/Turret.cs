@@ -35,7 +35,6 @@ public class Turret : MonoBehaviour, IDamagable
                 if (NotObstructed(other) && GameManager.instance.IsIlluminateed())
                 {
                     ShootRay(other);
-                    Debug.Log("You are hit!");
                     damagable.Damage();
                 }
             }
