@@ -240,7 +240,7 @@ MonoBehaviour:
   - {x: -0.17834324, y: -0.058458403, z: -0.000000019152788}
   m_ShapePathHash: 1644795684
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1242
+  m_InstanceId: 78298
 --- !u!114 &868125045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,5 +265,7 @@ MonoBehaviour:
   bugCountText: {fileID: 0}
   selectedBugImg: {fileID: 0}
   throwSound: {fileID: 8300000, guid: 1617a9f6a29287d4098cc7e0ed626970, type: 3}
+  scrollSound: {fileID: 8300000, guid: 7d0fe826a4e8c4e428f258587fcf281a, type: 3}
+  errorSound: {fileID: 8300000, guid: 93bc891b3a2b604408a37fcb2fd58096, type: 3}
   flashlight: {fileID: 484967789}
   offset: 1

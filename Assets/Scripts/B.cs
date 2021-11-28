@@ -19,6 +19,8 @@ public class B : MonoBehaviour, IDamagable
     [SerializeField] private AudioClip throwSound;
 
     [SerializeField] private AudioClip scrollSound;
+
+    [SerializeField] private AudioClip errorSound;
     // index of currently selected bugg
     private int _selectedBug;
 
@@ -51,6 +53,10 @@ public class B : MonoBehaviour, IDamagable
                 Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
                     Quaternion.identity) as GameObject;
             bullet.transform.rotation = transform.rotation;
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] <= 0)
+        {
+            GameManager.instance.PlaySoundEffect(errorSound);
         }
 
         //flashlight
