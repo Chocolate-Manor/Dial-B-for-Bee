@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 868125045}
   m_Layer: 0
   m_Name: B
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,7 +192,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!58 &868125043
@@ -240,7 +240,7 @@ MonoBehaviour:
   - {x: -0.17834324, y: -0.058458403, z: -0.000000019152788}
   m_ShapePathHash: 1644795684
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1452
+  m_InstanceId: -1232
 --- !u!114 &868125045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,12 +250,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5466132100793970139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7551ea3cec990a2a4903e6e3150266c0, type: 3}
+  m_Script: {fileID: 11500000, guid: ce0c42c36220a604aa94862fb4c754c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireFlyCount: 5
-  ladyBugCount: 5
-  firefly: {fileID: 3499596081660365745, guid: 294d81aba2ffdb722ab7a2f6dbe0d98c, type: 3}
-  ladybug: {fileID: 5802382168588440715, guid: 8756bef7a9a0e1811a75172663e73f1f, type: 3}
+  bugs:
+  - {fileID: 1986201594248793897, guid: 5bd5edb17b070344ebf64019ea234d37, type: 3}
+  - {fileID: 3499596081660365745, guid: 294d81aba2ffdb722ab7a2f6dbe0d98c, type: 3}
+  - {fileID: 5802382168588440715, guid: 8756bef7a9a0e1811a75172663e73f1f, type: 3}
+  bugCounts: 050000000500000005000000
+  bugSprites:
+  - {fileID: 21300000, guid: 4212a6654d5471c4e92aa8893af0e8d6, type: 3}
+  - {fileID: 21300000, guid: a0cc7197ff8da8f4e8721a53daf3b265, type: 3}
+  - {fileID: 21300000, guid: d70d72708a5352a4bb2dce5fafac644d, type: 3}
+  bugCountText: {fileID: 0}
+  selectedBugImg: {fileID: 0}
   flashlight: {fileID: 484967789}
   offset: 1
