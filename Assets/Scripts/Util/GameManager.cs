@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        flashlightOn = false;
     }
 
     public void PlaySoundEffect(AudioClip clip)
