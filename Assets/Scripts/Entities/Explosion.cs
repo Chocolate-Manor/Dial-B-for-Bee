@@ -7,7 +7,9 @@ public class Explosion : MonoBehaviour
 {
     private Vector3 explosionPos;
     [SerializeField] private CircleCollider2D explosionArea;
-    
+    [SerializeField] private ParticleSystem explosionParticle;
+    [SerializeField] private GameObject light;
+    [SerializeField] private Animator ani;
     private void Start()
     {
         explosionPos = transform.position;
@@ -15,6 +17,8 @@ public class Explosion : MonoBehaviour
 
     public void Explode()
     {
+        ani.SetTrigger("Explode");
+        explosionParticle.Play();
         Collider2D[] collider2Ds =  Physics2D.OverlapCircleAll(explosionPos, explosionArea.radius);
         foreach (Collider2D other in collider2Ds)
         {
@@ -28,9 +32,12 @@ public class Explosion : MonoBehaviour
 
     IEnumerator ExplodeAfterTime(float time, GameObject obj)
     {
+        transform.position = obj.transform.position;
         yield return new WaitForSeconds(time);
         Explode();
         Destroy(obj);
+        yield return new WaitForSeconds(1f);
+        Destroy(this);
     }
     
     /// <summary>

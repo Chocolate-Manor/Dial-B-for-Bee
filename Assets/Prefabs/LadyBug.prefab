@@ -208,5 +208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeSpan: 5
+  exploder: {fileID: 0}
   rb: {fileID: 2050605717469462903}
   speed: 2000
