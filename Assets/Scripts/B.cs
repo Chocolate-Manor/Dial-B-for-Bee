@@ -21,6 +21,8 @@ public class B : MonoBehaviour, IDamagable
     [SerializeField] private AudioClip scrollSound;
 
     [SerializeField] private AudioClip errorSound;
+    
+    [SerializeField] private AudioClip flashlightSound;
     // index of currently selected bugg
     private int _selectedBug;
 
@@ -71,12 +73,14 @@ public class B : MonoBehaviour, IDamagable
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            GameManager.instance.PlaySoundEffect(flashlightSound);
             flashlight.SetActive(true);
             GameManager.instance.flashlightOn = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            GameManager.instance.PlaySoundEffect(flashlightSound);
             flashlight.SetActive(false);
             GameManager.instance.flashlightOn = false;
         }
