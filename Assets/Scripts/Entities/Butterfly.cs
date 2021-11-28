@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Butterfly : MonoBehaviour, IProjectile
+public class Butterfly : MonoBehaviour, IProjectile, IDamagable
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float lifeSpan = 5;
@@ -41,11 +41,16 @@ public class Butterfly : MonoBehaviour, IProjectile
     public void OnHitDamage(Collision2D other)
     {
         IDamagable enemy = other.gameObject.GetComponentInChildren<IDamagable>();
-        if (enemy != null)
+        if (enemy != null && enemy != this)
         {
             enemy.Damage();
         }
     }
 
 
+    public void Damage()
+    {
+        Debug.Log("I am hit!");
+       Destroy(gameObject); 
+    }
 }
