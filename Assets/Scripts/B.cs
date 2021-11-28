@@ -16,6 +16,7 @@ public class B : MonoBehaviour, IDamagable
     public TextMeshProUGUI bugCountText;
     public Image selectedBugImg;
 
+    [SerializeField] private AudioClip throwSound;
     // index of currently selected bugg
     private int _selectedBug;
 
@@ -41,7 +42,8 @@ public class B : MonoBehaviour, IDamagable
 
         // shoot selected bugg if there is inventory for it
         if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
-        {
+        {   
+            GameManager.instance.PlaySoundEffect(throwSound);
             bugCounts[_selectedBug] -= 1;
             var bullet =
                 Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,

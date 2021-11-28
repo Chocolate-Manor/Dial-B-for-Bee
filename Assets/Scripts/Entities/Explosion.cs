@@ -10,7 +10,8 @@ public class Explosion : MonoBehaviour
     [SerializeField] private ParticleSystem explosionParticle;
     [SerializeField] private GameObject light;
     [SerializeField] private Animator ani;
-
+    [SerializeField] private AudioClip explosionSound;
+    
     private void Start()
     {
         //Destroy itself after a set number of seconds
@@ -45,6 +46,7 @@ public class Explosion : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         transform.position = obj.transform.position;
+        GameManager.instance.mainAudioSource.PlayOneShot(explosionSound);
         Explode();
     }
     

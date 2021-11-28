@@ -322,6 +322,7 @@ MonoBehaviour:
   laserAnimator: {fileID: 1228814549}
   theEntireTurret: {fileID: 7523288148669048105}
   exploder: {fileID: 7840044633106797347, guid: e2c4e34006556c341a4c90f53d8ee254, type: 3}
+  laser: {fileID: 8300000, guid: 5c51be2309451e546b866fdd08cec67d, type: 3}
 --- !u!1 &7523288148669048105
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +435,7 @@ MonoBehaviour:
   - {x: -0.11681004, y: 0.4933094, z: 0}
   m_ShapePathHash: 2037997961
   m_Mesh: {fileID: 0}
-  m_InstanceId: 81264
+  m_InstanceId: -1412
 --- !u!50 &618742872
 Rigidbody2D:
   serializedVersion: 4
