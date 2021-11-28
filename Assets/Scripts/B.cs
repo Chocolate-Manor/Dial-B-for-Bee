@@ -1,11 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class B : MonoBehaviour, IDamagable
 {
-    
     // list of available bugs and the amount of them in the inventory
     public List<GameObject> bugs;
     public List<int> bugCounts;
@@ -32,10 +33,9 @@ public class B : MonoBehaviour, IDamagable
     // Update is called once per frame
     void Update()
     {
-
         // update selected bugg
         InventoryControl();
-       
+
         // update inventory UI 
         InventoryUIControl();
 
@@ -43,7 +43,9 @@ public class B : MonoBehaviour, IDamagable
         if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
         {
             bugCounts[_selectedBug] -= 1;
-            var bullet = Instantiate(bugs[_selectedBug], transform.position + transform.up * offset, Quaternion.identity) as GameObject;
+            var bullet =
+                Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
+                    Quaternion.identity) as GameObject;
             bullet.transform.rotation = transform.rotation;
         }
 
@@ -75,7 +77,6 @@ public class B : MonoBehaviour, IDamagable
     /// </summary>
     private void InventoryControl()
     {
-        
         // Check mouse wheel to change selected bugg
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
@@ -93,7 +94,7 @@ public class B : MonoBehaviour, IDamagable
                 _selectedBug -= 1;
         }
     }
-    
+
     private void InventoryUIControl()
     {
         bugCountText.text = bugCounts[_selectedBug].ToString();
@@ -102,6 +103,8 @@ public class B : MonoBehaviour, IDamagable
 
     public void Damage()
     {
-        throw new System.NotImplementedException();
+        GameManager.instance.ReloadAfterDelay();
+        gameObject.SetActive(false);
     }
+
 }

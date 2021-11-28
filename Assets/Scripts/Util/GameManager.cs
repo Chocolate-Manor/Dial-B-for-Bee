@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,5 +51,16 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void ReloadAfterDelay()
+    {
+        StartCoroutine(ReloadAfterDelayCoroutine());
+    }
+    
+    IEnumerator ReloadAfterDelayCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
