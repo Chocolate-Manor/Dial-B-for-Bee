@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Butterfly : MonoBehaviour, IProjectile
+public class Butterfly : Bug, IProjectile
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
     [SerializeField] private AudioClip knifeHitSound;
-    
+
     private bool hasHit;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.name = "Butterfly";
         rb.AddForce(transform.right * speed);
         //Destroy(gameObject, lifeSpan);
         hasHit = false;
@@ -27,17 +28,23 @@ public class Butterfly : MonoBehaviour, IProjectile
             OnHitBehavior(other);
             OnHitDamage(other);
         }
+        
+        if (other.gameObject.tag == "Player")
+        {
+            B b = other.gameObject.GetComponent<B>();
+            PickMeUp(b);
+            Destroy(gameObject);
+        }
     }
 
     public void OnHitBehavior(Collision2D other)
     {
-            //make it stop moving
-            Destroy(rb);
-            //make it stick
-            transform.parent = other.transform;
-            //play sound
-            GameManager.instance.PlaySoundEffect(knifeHitSound);
-        
+        //make it stop moving
+        Destroy(rb);
+        //make it stick
+        transform.parent = other.transform;
+        //play sound
+        GameManager.instance.PlaySoundEffect(knifeHitSound);
     }
 
     public void OnHitDamage(Collision2D other)
@@ -48,7 +55,4 @@ public class Butterfly : MonoBehaviour, IProjectile
             enemy.Damage();
         }
     }
-
-
-
 }

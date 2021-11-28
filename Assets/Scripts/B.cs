@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,6 +11,7 @@ public class B : MonoBehaviour, IDamagable
     public List<GameObject> bugs;
     public List<int> bugCounts;
     public List<Sprite> bugSprites;
+    public List<String> bugNames;
 
     // the text object for amount of bugs
     public TextMeshProUGUI bugCountText;
@@ -22,12 +25,12 @@ public class B : MonoBehaviour, IDamagable
 
     [SerializeField] private AudioClip flashlightSound;
 
-    // index of currently selected bugg
+    // index of currently selected bug
     private int _selectedBug;
 
     [SerializeField] private GameObject flashlight;
 
-    public float offset = 1;
+    public float offset = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +50,7 @@ public class B : MonoBehaviour, IDamagable
             // update inventory UI 
             InventoryUIControl();
 
-            // shoot selected bugg if there is inventory for it
+            // shoot selected bug if there is inventory for it
             if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
             {
                 GameManager.instance.PlaySoundEffect(throwSound);
