@@ -17,6 +17,8 @@ public class B : MonoBehaviour, IDamagable
     public Image selectedBugImg;
 
     [SerializeField] private AudioClip throwSound;
+
+    [SerializeField] private AudioClip scrollSound;
     // index of currently selected bugg
     private int _selectedBug;
 
@@ -82,6 +84,7 @@ public class B : MonoBehaviour, IDamagable
         // Check mouse wheel to change selected bugg
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
+            GameManager.instance.PlaySoundEffect(scrollSound);
             if (_selectedBug >= bugs.Count - 1)
                 _selectedBug = 0;
             else
@@ -90,6 +93,7 @@ public class B : MonoBehaviour, IDamagable
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
+            GameManager.instance.PlaySoundEffect(scrollSound);
             if (_selectedBug <= 0)
                 _selectedBug = bugs.Count - 1;
             else
