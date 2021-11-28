@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class B : MonoBehaviour, IDamagable
@@ -21,8 +19,9 @@ public class B : MonoBehaviour, IDamagable
     [SerializeField] private AudioClip scrollSound;
 
     [SerializeField] private AudioClip errorSound;
-    
+
     [SerializeField] private AudioClip flashlightSound;
+
     // index of currently selected bugg
     private int _selectedBug;
 
@@ -40,29 +39,32 @@ public class B : MonoBehaviour, IDamagable
     // Update is called once per frame
     void Update()
     {
-        // update selected bugg
-        InventoryControl();
-
-        // update inventory UI 
-        InventoryUIControl();
-
-        // shoot selected bugg if there is inventory for it
-        if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
-        {   
-            GameManager.instance.PlaySoundEffect(throwSound);
-            bugCounts[_selectedBug] -= 1;
-            var bullet =
-                Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
-                    Quaternion.identity) as GameObject;
-            bullet.transform.rotation = transform.rotation;
-        }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] <= 0)
+        if (!PauseMenu.IsPaused)
         {
-            GameManager.instance.PlaySoundEffect(errorSound);
-        }
+            // update selected bugg
+            InventoryControl();
 
-        //flashlight
-        FlashlightControl();
+            // update inventory UI 
+            InventoryUIControl();
+
+            // shoot selected bugg if there is inventory for it
+            if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
+            {
+                GameManager.instance.PlaySoundEffect(throwSound);
+                bugCounts[_selectedBug] -= 1;
+                var bullet =
+                    Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
+                        Quaternion.identity) as GameObject;
+                bullet.transform.rotation = transform.rotation;
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] <= 0)
+            {
+                GameManager.instance.PlaySoundEffect(errorSound);
+            }
+
+            //flashlight
+            FlashlightControl();
+        }
     }
 
     /// <summary>
@@ -122,5 +124,4 @@ public class B : MonoBehaviour, IDamagable
         GameManager.instance.ReloadAfterDelay();
         gameObject.SetActive(false);
     }
-
 }
