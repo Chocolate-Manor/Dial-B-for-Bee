@@ -2,18 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance { get; private set; }
-
+    
     private void Awake()
     {
         CheckInstance(); //avoid duplicates
         lightsYouAreIlluminatedBy = new List<Collider2D>();
         flashlightOn = false;
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
 
     }
 
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public List<Collider2D> lightsYouAreIlluminatedBy;
     public bool flashlightOn;
+    public AudioSource mainAudioSource;
     
     public void GameOver()
     {
@@ -50,5 +52,30 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void ReloadAfterDelay()
+    {
+        StartCoroutine(ReloadAfterDelayCoroutine());
+    }
+    
+    IEnumerator ReloadAfterDelayCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        flashlightOn = false;
+    }
+
+    public void PlaySoundEffect(AudioClip clip)
+    {
+        mainAudioSource.PlayOneShot(clip);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        } 
     }
 }

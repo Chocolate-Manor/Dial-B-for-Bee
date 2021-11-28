@@ -1,11 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Shooting : MonoBehaviour
+public class B : MonoBehaviour, IDamagable
 {
-    
     // list of available bugs and the amount of them in the inventory
     public List<GameObject> bugs;
     public List<int> bugCounts;
@@ -15,6 +16,13 @@ public class Shooting : MonoBehaviour
     public TextMeshProUGUI bugCountText;
     public Image selectedBugImg;
 
+    [SerializeField] private AudioClip throwSound;
+
+    [SerializeField] private AudioClip scrollSound;
+
+    [SerializeField] private AudioClip errorSound;
+    
+    [SerializeField] private AudioClip flashlightSound;
     // index of currently selected bugg
     private int _selectedBug;
 
@@ -32,19 +40,25 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // update selected bugg
         InventoryControl();
-       
+
         // update inventory UI 
         InventoryUIControl();
 
         // shoot selected bugg if there is inventory for it
         if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
-        {
+        {   
+            GameManager.instance.PlaySoundEffect(throwSound);
             bugCounts[_selectedBug] -= 1;
-            var bullet = Instantiate(bugs[_selectedBug], transform.position + transform.up * offset, Quaternion.identity) as GameObject;
+            var bullet =
+                Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
+                    Quaternion.identity) as GameObject;
             bullet.transform.rotation = transform.rotation;
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] <= 0)
+        {
+            GameManager.instance.PlaySoundEffect(errorSound);
         }
 
         //flashlight
@@ -59,12 +73,14 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            GameManager.instance.PlaySoundEffect(flashlightSound);
             flashlight.SetActive(true);
             GameManager.instance.flashlightOn = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            GameManager.instance.PlaySoundEffect(flashlightSound);
             flashlight.SetActive(false);
             GameManager.instance.flashlightOn = false;
         }
@@ -75,10 +91,10 @@ public class Shooting : MonoBehaviour
     /// </summary>
     private void InventoryControl()
     {
-        
         // Check mouse wheel to change selected bugg
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
+            GameManager.instance.PlaySoundEffect(scrollSound);
             if (_selectedBug >= bugs.Count - 1)
                 _selectedBug = 0;
             else
@@ -87,16 +103,24 @@ public class Shooting : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
+            GameManager.instance.PlaySoundEffect(scrollSound);
             if (_selectedBug <= 0)
                 _selectedBug = bugs.Count - 1;
             else
                 _selectedBug -= 1;
         }
     }
-    
+
     private void InventoryUIControl()
     {
         bugCountText.text = bugCounts[_selectedBug].ToString();
         selectedBugImg.sprite = bugSprites[_selectedBug];
     }
+
+    public void Damage()
+    {
+        GameManager.instance.ReloadAfterDelay();
+        gameObject.SetActive(false);
+    }
+
 }

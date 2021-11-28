@@ -251,5 +251,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4377735780202184611}
-  lifeSpan: 5
   speed: 1000
+  knifeHitSound: {fileID: 8300000, guid: bb43360e06c3efc49a621c2e775ca351, type: 3}
