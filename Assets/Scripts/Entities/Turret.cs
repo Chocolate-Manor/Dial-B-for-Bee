@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : MonoBehaviour, IDamagable
 {
     [SerializeField] private Transform rayStart;
     [SerializeField] public LineRenderer m_lineRenderer;
@@ -12,6 +12,7 @@ public class Turret : MonoBehaviour
 
     [SerializeField] private Animator turretAnimator;
 
+    [SerializeField] private GameObject theEntireTurret;
     private void Start()
     {
         m_lineRenderer.useWorldSpace = true;
@@ -42,8 +43,13 @@ public class Turret : MonoBehaviour
     private bool NotObstructed(Collider2D other)
     {
         Vector3 direction = other.transform.position - rayStart.position;
-        Debug.DrawRay(rayStart.position, direction, Color.red);
+        //Debug.DrawRay(rayStart.position, direction, Color.red);
         //Debug.Log(Physics2D.Raycast(rayStart.position, direction).collider.name);
         return Physics2D.Raycast(rayStart.position, direction).collider.CompareTag("Player");
+    }
+
+    public void Damage()
+    {
+        Destroy(theEntireTurret);
     }
 }
