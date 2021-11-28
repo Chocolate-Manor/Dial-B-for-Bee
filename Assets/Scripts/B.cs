@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Shooting : MonoBehaviour
+public class B : MonoBehaviour, IDamagable
 {
     
     // list of available bugs and the amount of them in the inventory
@@ -98,5 +98,10 @@ public class Shooting : MonoBehaviour
     {
         bugCountText.text = bugCounts[_selectedBug].ToString();
         selectedBugImg.sprite = bugSprites[_selectedBug];
+    }
+
+    public void Damage()
+    {
+        throw new System.NotImplementedException();
     }
 }

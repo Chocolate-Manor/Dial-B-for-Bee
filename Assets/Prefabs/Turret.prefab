@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1228814547}
   - component: {fileID: 1228814548}
+  - component: {fileID: 1228814549}
   m_Layer: 0
   m_Name: RayStart
   m_TagString: Untagged
@@ -76,19 +77,37 @@ LineRenderer:
   - {x: 4, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.0546875
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.55017823
+        value: 0.12093581
+        inSlope: -0.35392714
+        outSlope: -0.35392714
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.99685043
+        inSlope: 5.3227477
+        outSlope: 5.3227477
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.19650654
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -129,6 +148,25 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!95 &1228814549
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228814546}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0bbc9cad4ba36f947ab8831113d6cb0b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2738152263465168841
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +246,7 @@ MonoBehaviour:
   m_lineRenderer: {fileID: 1228814548}
   turretHead: {fileID: 7523288149831938068}
   turretAnimator: {fileID: 5224393761394073231}
+  laserAnimator: {fileID: 1228814549}
   theEntireTurret: {fileID: 7523288148669048105}
 --- !u!1 &7523288148669048105
 GameObject:

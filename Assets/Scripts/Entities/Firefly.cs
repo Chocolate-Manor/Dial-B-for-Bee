@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Firefly : MonoBehaviour
+public class Firefly : MonoBehaviour, IDamagable
 {
 
     [SerializeField]
@@ -19,5 +19,10 @@ public class Firefly : MonoBehaviour
     void Update()
     {
         rb.velocity = transform.up * speed;
+    }
+
+    public void Damage()
+    {
+        Destroy(this.gameObject); 
     }
 }
