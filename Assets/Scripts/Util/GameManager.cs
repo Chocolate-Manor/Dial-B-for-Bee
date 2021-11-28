@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance { get; private set; }
-
+    
     private void Awake()
     {
         CheckInstance(); //avoid duplicates
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public List<Collider2D> lightsYouAreIlluminatedBy;
     public bool flashlightOn;
+    public AudioSource mainAudioSource;
     
     public void GameOver()
     {
@@ -62,5 +63,11 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void PlaySoundEffect(AudioClip clip)
+    {
+        mainAudioSource.PlayOneShot(clip);
+        Debug.Log("Sound played!");
     }
 }

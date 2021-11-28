@@ -14,9 +14,10 @@ public class Turret : MonoBehaviour, IDamagable
     [SerializeField] private Animator laserAnimator;
 
     [SerializeField] private GameObject theEntireTurret;
-
+    
     [SerializeField] private GameObject exploder;
-
+    [SerializeField] private AudioClip laser;
+    
     private void Start()
     {
         m_lineRenderer.useWorldSpace = true;
@@ -60,10 +61,11 @@ public class Turret : MonoBehaviour, IDamagable
     {
         //turretHead.up = (other.transform.position - turretHead.transform.position) * -1.0f;
         StartCoroutine(stopTurretFor(2f));
-
+        
         m_lineRenderer.SetPosition(0, rayStart.position);
         m_lineRenderer.SetPosition(1, other.transform.position);
         laserAnimator.SetTrigger("ShootLaser");
+        GameManager.instance.PlaySoundEffect(laser);
     }
 
     private bool NotObstructed(Collider2D other)
