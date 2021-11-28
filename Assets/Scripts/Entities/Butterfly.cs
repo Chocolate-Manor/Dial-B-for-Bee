@@ -21,23 +21,23 @@ public class Butterfly : MonoBehaviour, IProjectile
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        OnHitBehavior(other);
-        OnHitDamage(other);
-        
+        if (hasHit == false)
+        {
+            hasHit = true;
+            OnHitBehavior(other);
+            OnHitDamage(other);
+        }
     }
 
     public void OnHitBehavior(Collision2D other)
     {
-        if (hasHit == false)
-        {
-            hasHit = true;
-            //make it stop moving on hit.
+            //make it stop moving
             Destroy(rb);
             //make it stick
             transform.parent = other.transform;
-        } 
+        
     }
-    
+
     public void OnHitDamage(Collision2D other)
     {
         IDamagable enemy = other.gameObject.GetComponentInChildren<IDamagable>();
@@ -47,8 +47,5 @@ public class Butterfly : MonoBehaviour, IProjectile
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+
 }

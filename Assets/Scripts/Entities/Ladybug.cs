@@ -24,8 +24,7 @@ public class Ladybug : MonoBehaviour
         rb.AddForce(transform.up * speed);
         
         //explode it after lifespan. 
-        explosion = Instantiate(exploder).GetComponent<Explosion>();
-        explosion.Explode(lifeSpan, gameObject);
+        Instantiate(exploder).GetComponent<Explosion>().Explode(lifeSpan, gameObject);
         Destroy(gameObject, lifeSpan + 0.1f);
     }
 

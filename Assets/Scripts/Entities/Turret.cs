@@ -15,6 +15,8 @@ public class Turret : MonoBehaviour, IDamagable
 
     [SerializeField] private GameObject theEntireTurret;
 
+    [SerializeField] private GameObject exploder;
+
     private void Start()
     {
         m_lineRenderer.useWorldSpace = true;
@@ -36,7 +38,6 @@ public class Turret : MonoBehaviour, IDamagable
                     Debug.Log("You are hit!");
                     damagable.Damage();
                 }
-   
             }
 
             //if it's other objects that carry light
@@ -74,8 +75,18 @@ public class Turret : MonoBehaviour, IDamagable
         return Physics2D.Raycast(rayStart.position, direction).collider.CompareTag("Player");
     }
 
+    private bool isDamaged = false;
+
     public void Damage()
     {
-        Destroy(theEntireTurret);
+        if (!isDamaged)
+        {
+            isDamaged = true;
+            Instantiate(exploder).GetComponent<Explosion>().Explode(0.1f, gameObject);
+            Destroy(theEntireTurret, 5f);
+            theEntireTurret.SetActive(false);
+        }
     }
+
+
 }
