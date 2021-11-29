@@ -31,7 +31,6 @@ public class B : MonoBehaviour, IDamagable
     public float offset = 2;
 
 
-
     // Update is called once per frame
     void Update()
     {
@@ -117,5 +116,34 @@ public class B : MonoBehaviour, IDamagable
     {
         GameManager.instance.ReloadAfterDelay();
         gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        LoadBugCounts();
+    }
+
+    private void LoadBugCounts()
+    {
+        for (int i = 0; i < bugs.Count; i++)
+        {
+            if (PlayerPrefs.HasKey(bugNames[i]))
+            {
+                bugCounts[i] = PlayerPrefs.GetInt(bugNames[i]);
+            }
+            else
+            {
+                PlayerPrefs.SetInt(bugNames[i], 0);
+                bugCounts[i] = 0;
+            }
+        }
+    }
+
+    public void SaveBugCounts()
+    {
+        for (int i = 0; i < bugs.Count; i++)
+        {
+            PlayerPrefs.SetInt(bugNames[i], bugCounts[i]);
+        }
     }
 }
