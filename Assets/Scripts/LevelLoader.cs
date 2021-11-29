@@ -8,9 +8,13 @@ public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private string levelToLoad;
     [SerializeField] private B b;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        b.SaveBugCounts();
-        SceneManager.LoadScene(levelToLoad);
+        if (other.CompareTag("Player"))
+        {
+            b.SaveBugCounts();
+            SceneManager.LoadScene(levelToLoad);
+        }
     }
 }
