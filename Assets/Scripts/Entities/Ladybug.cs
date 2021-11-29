@@ -12,20 +12,34 @@ public class Ladybug : Bug
 
     private Explosion explosion;
     [SerializeField] private GameObject exploder;
-    
+
     [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private float speed;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         this.name = "Ladybug";
         initializationTime = Time.timeSinceLevelLoad;
         rb.AddForce(transform.up * speed);
-        
+
         //explode it after lifespan. 
-        Instantiate(exploder).GetComponent<Explosion>().Explode(lifeSpan, gameObject);
-        Destroy(gameObject, lifeSpan + 0.1f);
-    } 
+        if (!isPickable)
+        {
+            Instantiate(exploder).GetComponent<Explosion>().Explode(lifeSpan, gameObject);
+            Destroy(gameObject, lifeSpan + 0.1f);
+        }
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player" && isPickable)
+        {
+            B b = other.gameObject.GetComponent<B>();
+            PickMeUp(b);
+            Destroy(gameObject);
+        }
+    }
+    
 }

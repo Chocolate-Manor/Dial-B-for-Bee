@@ -26,11 +26,19 @@ public class B : MonoBehaviour, IDamagable
 
     // index of currently selected bug
     private int _selectedBug;
-
+    private int indexOfLadybug;
 
     public float offset = 2;
 
+    
+    
+    private void Start()
+    {
+        LoadBugCounts();
+        indexOfLadybug = bugNames.FindIndex(x => x.Equals("Ladybug"));
+    }
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -51,6 +59,11 @@ public class B : MonoBehaviour, IDamagable
                     Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
                         Quaternion.identity) as GameObject;
                 bullet.transform.rotation = transform.rotation;
+                if (_selectedBug == indexOfLadybug)
+                {
+                    Ladybug ladybug = bullet.GetComponent<Ladybug>();
+                    ladybug.isPickable = false;
+                }
             }
             else if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] <= 0)
             {
@@ -116,11 +129,6 @@ public class B : MonoBehaviour, IDamagable
     {
         GameManager.instance.ReloadAfterDelay();
         gameObject.SetActive(false);
-    }
-
-    private void Start()
-    {
-        LoadBugCounts();
     }
 
     private void LoadBugCounts()

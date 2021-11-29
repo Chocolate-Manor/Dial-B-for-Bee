@@ -17,7 +17,7 @@ public class Butterfly : Bug, IProjectile
         this.name = "Butterfly";
         rb.AddForce(transform.right * speed);
         //Destroy(gameObject, lifeSpan);
-        hasHit = false;
+        hasHit = (speed == 0);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
