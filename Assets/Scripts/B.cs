@@ -23,20 +23,13 @@ public class B : MonoBehaviour, IDamagable
 
     [SerializeField] private AudioClip errorSound;
 
-    [SerializeField] private AudioClip flashlightSound;
 
     // index of currently selected bug
     private int _selectedBug;
 
-    [SerializeField] private GameObject flashlight;
 
     public float offset = 2;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        flashlight.SetActive(false);
-    }
 
 
     // Update is called once per frame
