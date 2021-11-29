@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     {
         CheckInstance(); //avoid duplicates
         lightsYouAreIlluminatedBy = new List<Collider2D>();
-        flashlightOn = false;
         DontDestroyOnLoad(gameObject);
 
     }
@@ -34,7 +33,6 @@ public class GameManager : MonoBehaviour
     //-----------------------------------------//
 
     public List<Collider2D> lightsYouAreIlluminatedBy;
-    public bool flashlightOn;
     public AudioSource mainAudioSource;
     
     public void GameOver()
@@ -46,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public bool IsIlluminateed()
     {
-        if (flashlightOn || lightsYouAreIlluminatedBy.Count > 0)
+        if (lightsYouAreIlluminatedBy.Count > 0)
         {
             return true;
         }
@@ -63,7 +61,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        flashlightOn = false;
     }
 
     public void PlaySoundEffect(AudioClip clip)

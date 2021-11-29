@@ -66,30 +66,28 @@ public class B : MonoBehaviour, IDamagable
             }
 
             //flashlight
-            FlashlightControl();
+            //FlashlightControl();
         }
     }
 
-    /// <summary>
-    /// Controls the flashlight. Put in update.
-    /// Also set if flashlight is on in game manager. 
-    /// </summary>
-    private void FlashlightControl()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameManager.instance.PlaySoundEffect(flashlightSound);
-            flashlight.SetActive(true);
-            GameManager.instance.flashlightOn = true;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            GameManager.instance.PlaySoundEffect(flashlightSound);
-            flashlight.SetActive(false);
-            GameManager.instance.flashlightOn = false;
-        }
-    }
+    // /// <summary>
+    // /// Controls the flashlight. Put in update.
+    // /// Also set if flashlight is on in game manager. 
+    // /// </summary>
+    // private void FlashlightControl()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Space))
+    //     {
+    //         GameManager.instance.PlaySoundEffect(flashlightSound);
+    //         flashlight.SetActive(true);
+    //     }
+    //
+    //     if (Input.GetKeyUp(KeyCode.Space))
+    //     {
+    //         GameManager.instance.PlaySoundEffect(flashlightSound);
+    //         flashlight.SetActive(false);
+    //     }
+    // }
 
     /// <summary>
     /// Read scrollbar to update selected bug
