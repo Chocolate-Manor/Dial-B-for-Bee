@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crateBreak: {fileID: 8300000, guid: 7e434ae1ca48a7a4dbe1cdcc154af4d4, type: 3}
+  boxBreakParticle: {fileID: 312303898839812024, guid: 943dcf6e44306d24d86d9bcb7d73f288, type: 3}
 --- !u!61 &1661853406694416207
 BoxCollider2D:
   m_ObjectHideFlags: 0
