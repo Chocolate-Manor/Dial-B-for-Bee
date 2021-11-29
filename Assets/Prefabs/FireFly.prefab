@@ -288,6 +288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c42e1eb6b975a0eb6e092d6c5cca66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
+  isPickable: 1
+  pickupSound: {fileID: 8300000, guid: 7253581a39ea96a4a8844c839ca524ee, type: 3}
   rb: {fileID: 3499596081660365756}
   speed: 2
 --- !u!1 &3499596082814864992

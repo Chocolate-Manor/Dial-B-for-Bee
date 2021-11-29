@@ -251,6 +251,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: ButterFly
+  isPickable: 1
+  pickupSound: {fileID: 8300000, guid: 7253581a39ea96a4a8844c839ca524ee, type: 3}
   rb: {fileID: 4377735780202184611}
   speed: 1000
   knifeHitSound: {fileID: 8300000, guid: bb43360e06c3efc49a621c2e775ca351, type: 3}
