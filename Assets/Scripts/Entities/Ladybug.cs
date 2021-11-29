@@ -13,6 +13,8 @@ public class Ladybug : Bug
     private Explosion explosion;
     [SerializeField] private GameObject exploder;
 
+    [SerializeField] private GameObject light;
+    
     [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private float speed;
@@ -24,6 +26,8 @@ public class Ladybug : Bug
         initializationTime = Time.timeSinceLevelLoad;
         rb.AddForce(transform.up * speed);
 
+        StartCoroutine(LightTicking());
+        
         //explode it after lifespan. 
         if (!isPickable)
         {
@@ -39,6 +43,17 @@ public class Ladybug : Bug
             B b = other.gameObject.GetComponent<B>();
             PickMeUp(b);
             Destroy(gameObject);
+        }
+    }
+
+    IEnumerator LightTicking()
+    {
+        while (true)
+        {
+            light.SetActive(false);
+            yield return new WaitForSeconds(0.4f);
+            light.SetActive(true);
+            yield return new WaitForSeconds(0.4f);
         }
     }
     

@@ -68,13 +68,7 @@ public class GameManager : MonoBehaviour
         mainAudioSource.PlayOneShot(clip);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        } 
-    }
+
 
 
 }

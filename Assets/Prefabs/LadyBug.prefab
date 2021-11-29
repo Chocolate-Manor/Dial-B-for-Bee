@@ -212,5 +212,6 @@ MonoBehaviour:
   pickupSound: {fileID: 8300000, guid: 7253581a39ea96a4a8844c839ca524ee, type: 3}
   lifeSpan: 5
   exploder: {fileID: 7840044633106797347, guid: e2c4e34006556c341a4c90f53d8ee254, type: 3}
+  light: {fileID: 1794058682102005775}
   rb: {fileID: 2050605717469462903}
   speed: 2000
