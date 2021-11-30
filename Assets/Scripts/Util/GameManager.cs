@@ -17,6 +17,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Destroy(gameObject);
+        } 
+    }
+
     void CheckInstance()
     {
         if (instance == null)
