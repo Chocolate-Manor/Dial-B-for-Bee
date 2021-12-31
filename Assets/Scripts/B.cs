@@ -53,7 +53,7 @@ public class B : MonoBehaviour, IDamagable
             // shoot selected bug if there is inventory for it
             if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
             {
-                GameManager.instance.PlaySoundEffect(throwSound);
+                GameManager.Instance.PlaySoundEffect(throwSound);
                 bugCounts[_selectedBug] -= 1;
                 var bullet =
                     Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
@@ -67,7 +67,7 @@ public class B : MonoBehaviour, IDamagable
             }
             else if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] <= 0)
             {
-                GameManager.instance.PlaySoundEffect(errorSound);
+                GameManager.Instance.PlaySoundEffect(errorSound);
             }
 
             //flashlight
@@ -102,7 +102,7 @@ public class B : MonoBehaviour, IDamagable
         // Check mouse wheel to change selected bugg
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            GameManager.instance.PlaySoundEffect(scrollSound);
+            GameManager.Instance.PlaySoundEffect(scrollSound);
             if (_selectedBug >= bugs.Count - 1)
                 _selectedBug = 0;
             else
@@ -111,7 +111,7 @@ public class B : MonoBehaviour, IDamagable
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            GameManager.instance.PlaySoundEffect(scrollSound);
+            GameManager.Instance.PlaySoundEffect(scrollSound);
             if (_selectedBug <= 0)
                 _selectedBug = bugs.Count - 1;
             else
@@ -127,7 +127,7 @@ public class B : MonoBehaviour, IDamagable
 
     public void Damage()
     {
-        GameManager.instance.ReloadAfterDelay();
+        GameManager.Instance.ReloadAfterDelay();
         gameObject.SetActive(false);
     }
 

@@ -44,7 +44,7 @@ public class Butterfly : Bug, IProjectile
         //make it stick
         transform.parent = other.transform;
         //play sound
-        GameManager.instance.PlaySoundEffect(knifeHitSound);
+        GameManager.Instance.PlaySoundEffect(knifeHitSound);
     }
 
     public void OnHitDamage(Collision2D other)

@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehavior<GameManager>
 {
 
-    public static GameManager instance { get; private set; }
+    //public static GameManager instance { get; private set; }
     
-    private void Awake()
-    {
-        CheckInstance(); //avoid duplicates
+    //base.awake is called to make it singleton.
+    protected override void Awake()
+    {   
+        base.Awake();
         lightsYouAreIlluminatedBy = new List<Collider2D>();
         DontDestroyOnLoad(gameObject);
 
@@ -23,19 +24,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         } 
-    }
-
-    void CheckInstance()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
     }
 
     //-----------------------------------------//

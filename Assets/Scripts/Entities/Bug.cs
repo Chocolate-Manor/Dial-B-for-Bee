@@ -12,7 +12,7 @@ public class Bug : MonoBehaviour
         {
             int index = player.bugNames.FindIndex(x => x.Equals(name));
             player.bugCounts[index]++;
-            GameManager.instance.PlaySoundEffect(pickupSound);
+            GameManager.Instance.PlaySoundEffect(pickupSound);
         }
     }
 }

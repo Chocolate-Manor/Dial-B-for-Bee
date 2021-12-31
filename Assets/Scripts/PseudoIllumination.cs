@@ -11,7 +11,7 @@ public class PseudoIllumination : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            GameManager.instance.lightsYouAreIlluminatedBy.Add(other); 
+            GameManager.Instance.lightsYouAreIlluminatedBy.Add(other); 
         }
     }
 
@@ -19,7 +19,7 @@ public class PseudoIllumination : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            GameManager.instance.lightsYouAreIlluminatedBy.Remove(other);
+            GameManager.Instance.lightsYouAreIlluminatedBy.Remove(other);
         }
     }
 

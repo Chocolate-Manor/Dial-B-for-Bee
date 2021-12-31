@@ -5,13 +5,18 @@ using UnityEngine;
 
 public class EssentialsLoader : MonoBehaviour
 {
-   [SerializeField] private GameObject gameManager;
-
+   // [SerializeField] private GameObject gameManager;
+   [SerializeField] private GameObject[] toBeLoaded;
    private void Awake()
    {
-      if (GameManager.instance == null)
+      foreach (var gameObject in toBeLoaded)
       {
-         Instantiate(gameManager);
-      }
+         Instantiate(gameObject);
+      } 
+      
+      // if (GameManager.Instance == null)
+      // {
+      //    Instantiate(gameManager);
+      // }
    }
 }

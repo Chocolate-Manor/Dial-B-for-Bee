@@ -9,7 +9,7 @@ public class Crate : MonoBehaviour, IDamagable
     
     public void Damage()
     {
-        GameManager.instance.PlaySoundEffect(crateBreak);
+        GameManager.Instance.PlaySoundEffect(crateBreak);
         Instantiate(boxBreakParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

@@ -46,7 +46,7 @@ public class Explosion : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         transform.position = obj.transform.position;
-        GameManager.instance.mainAudioSource.PlayOneShot(explosionSound);
+        GameManager.Instance.mainAudioSource.PlayOneShot(explosionSound);
         Explode();
     }
     

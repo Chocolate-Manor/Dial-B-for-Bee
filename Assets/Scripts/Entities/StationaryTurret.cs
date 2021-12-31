@@ -31,7 +31,7 @@ public class StationaryTurret : MonoBehaviour, IDamagable
             //if player enter line of sight, and more than one light is illuminating the player, kill the player. 
             if (other.CompareTag("Player"))
             {
-                if (NotObstructed(other) && GameManager.instance.IsIlluminateed())
+                if (NotObstructed(other) && GameManager.Instance.IsIlluminateed())
                 {
                     ShootRay(other);
                     damagable.Damage();
@@ -58,7 +58,7 @@ public class StationaryTurret : MonoBehaviour, IDamagable
         m_lineRenderer.SetPosition(0, rayStart.position);
         m_lineRenderer.SetPosition(1, other.transform.position);
         laserAnimator.SetTrigger("ShootLaser");
-        GameManager.instance.PlaySoundEffect(laser);
+        GameManager.Instance.PlaySoundEffect(laser);
     }
 
     private bool NotObstructed(Collider2D other)
