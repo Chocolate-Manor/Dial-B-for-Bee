@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -22,15 +21,15 @@ public class B : MonoBehaviour, IDamagable
     [SerializeField] private AudioClip scrollSound;
 
     [SerializeField] private AudioClip errorSound;
-
+    
+    [SerializeField] private float distanceRayOffset = 0.485f;
 
     // index of currently selected bug
-    private int _selectedBug;
+    private int selectedBug;
     private int indexOfLadybug;
 
     public float offset = 2;
 
-    
     
     private void Start()
     {
@@ -38,10 +37,12 @@ public class B : MonoBehaviour, IDamagable
         indexOfLadybug = bugNames.FindIndex(x => x.Equals("Ladybug"));
     }
 
-    
     // Update is called once per frame
     void Update()
     {
+        
+        
+        
         if (!PauseMenu.IsPaused)
         {
             // update selected bugg
@@ -49,23 +50,23 @@ public class B : MonoBehaviour, IDamagable
 
             // update inventory UI 
             InventoryUIControl();
-
-            // shoot selected bug if there is inventory for it
-            if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
+            
+            // shoot selected bugg if there is inventory for it (if dist=0 then no collision)
+            float dist = DistanceToColliders(0.5f);
+            if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[selectedBug] > 0 && dist == 0)
             {
                 GameManager.Instance.PlaySoundEffect(throwSound);
-                bugCounts[_selectedBug] -= 1;
-                var bullet =
-                    Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
-                        Quaternion.identity) as GameObject;
+                bugCounts[selectedBug] -= 1;
+                var bullet = Instantiate(bugs[selectedBug], transform.position + transform.up * offset,
+                    Quaternion.identity);
                 bullet.transform.rotation = transform.rotation;
-                if (_selectedBug == indexOfLadybug)
+                if (selectedBug == indexOfLadybug)
                 {
                     Ladybug ladybug = bullet.GetComponent<Ladybug>();
                     ladybug.isPickable = false;
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] <= 0)
+            else if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 GameManager.Instance.PlaySoundEffect(errorSound);
             }
@@ -75,24 +76,18 @@ public class B : MonoBehaviour, IDamagable
         }
     }
 
-    // /// <summary>
-    // /// Controls the flashlight. Put in update.
-    // /// Also set if flashlight is on in game manager. 
-    // /// </summary>
-    // private void FlashlightControl()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Space))
-    //     {
-    //         GameManager.instance.PlaySoundEffect(flashlightSound);
-    //         flashlight.SetActive(true);
-    //     }
-    //
-    //     if (Input.GetKeyUp(KeyCode.Space))
-    //     {
-    //         GameManager.instance.PlaySoundEffect(flashlightSound);
-    //         flashlight.SetActive(false);
-    //     }
-    // }
+    private float DistanceToColliders(float maxDist)
+    {
+        // ray starting at player (with offset) and in direction its facing
+        Ray ray = new Ray(transform.position + distanceRayOffset * transform.up, transform.up);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, maxDist);
+       
+        Color rayColor = hit.distance == 0 ? Color.white : Color.red;
+        Debug.DrawRay(ray.origin, ray.direction * maxDist, rayColor);
+        Debug.Log(hit.distance);
+         
+        return hit.distance;           
+    }
 
     /// <summary>
     /// Read scrollbar to update selected bug
@@ -103,26 +98,26 @@ public class B : MonoBehaviour, IDamagable
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             GameManager.Instance.PlaySoundEffect(scrollSound);
-            if (_selectedBug >= bugs.Count - 1)
-                _selectedBug = 0;
+            if (selectedBug >= bugs.Count - 1)
+                selectedBug = 0;
             else
-                _selectedBug += 1;
+                selectedBug += 1;
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
             GameManager.Instance.PlaySoundEffect(scrollSound);
-            if (_selectedBug <= 0)
-                _selectedBug = bugs.Count - 1;
+            if (selectedBug <= 0)
+                selectedBug = bugs.Count - 1;
             else
-                _selectedBug -= 1;
+                selectedBug -= 1;
         }
     }
 
     private void InventoryUIControl()
     {
-        bugCountText.text = bugCounts[_selectedBug].ToString();
-        selectedBugImg.sprite = bugSprites[_selectedBug];
+        bugCountText.text = bugCounts[selectedBug].ToString();
+        selectedBugImg.sprite = bugSprites[selectedBug];
     }
 
     public void Damage()
