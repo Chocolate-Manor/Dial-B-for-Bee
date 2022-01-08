@@ -25,7 +25,7 @@ public class B : MonoBehaviour, IDamagable
     [SerializeField] private float distanceRayOffset = 0.485f;
 
     // index of currently selected bug
-    private int selectedBug;
+    private int _selectedBug;
     private int indexOfLadybug;
 
     public float offset = 2;
@@ -53,14 +53,14 @@ public class B : MonoBehaviour, IDamagable
             
             // shoot selected bugg if there is inventory for it (if dist=0 then no collision)
             float dist = DistanceToColliders(0.5f);
-            if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[selectedBug] > 0 && dist == 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0 && dist == 0)
             {
                 GameManager.Instance.PlaySoundEffect(throwSound);
-                bugCounts[selectedBug] -= 1;
-                var bullet = Instantiate(bugs[selectedBug], transform.position + transform.up * offset,
+                bugCounts[_selectedBug] -= 1;
+                var bullet = Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
                     Quaternion.identity);
                 bullet.transform.rotation = transform.rotation;
-                if (selectedBug == indexOfLadybug)
+                if (_selectedBug == indexOfLadybug)
                 {
                     Ladybug ladybug = bullet.GetComponent<Ladybug>();
                     ladybug.isPickable = false;
@@ -98,26 +98,26 @@ public class B : MonoBehaviour, IDamagable
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             GameManager.Instance.PlaySoundEffect(scrollSound);
-            if (selectedBug >= bugs.Count - 1)
-                selectedBug = 0;
+            if (_selectedBug >= bugs.Count - 1)
+                _selectedBug = 0;
             else
-                selectedBug += 1;
+                _selectedBug += 1;
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
             GameManager.Instance.PlaySoundEffect(scrollSound);
-            if (selectedBug <= 0)
-                selectedBug = bugs.Count - 1;
+            if (_selectedBug <= 0)
+                _selectedBug = bugs.Count - 1;
             else
-                selectedBug -= 1;
+                _selectedBug -= 1;
         }
     }
 
     private void InventoryUIControl()
     {
-        bugCountText.text = bugCounts[selectedBug].ToString();
-        selectedBugImg.sprite = bugSprites[selectedBug];
+        bugCountText.text = bugCounts[_selectedBug].ToString();
+        selectedBugImg.sprite = bugSprites[_selectedBug];
     }
 
     public void Damage()
