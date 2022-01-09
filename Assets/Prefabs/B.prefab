@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 868125044}
   - component: {fileID: 868125045}
   - component: {fileID: 3057258051173056583}
+  - component: {fileID: 868125039}
   m_Layer: 0
   m_Name: B
   m_TagString: Player
@@ -132,6 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rb: {fileID: 5466132100793970143}
+  animator: {fileID: 868125039}
+  footstepSound: {fileID: 8300000, guid: 3f541232c7f8b354cb4878bcc219e2e1, type: 3}
 --- !u!50 &5466132100793970143
 Rigidbody2D:
   serializedVersion: 4
@@ -182,7 +185,7 @@ MonoBehaviour:
   - {x: -0.17834324, y: -0.058458403, z: -0.000000019152788}
   m_ShapePathHash: 1644795684
   m_Mesh: {fileID: 0}
-  m_InstanceId: 30388
+  m_InstanceId: -102352
 --- !u!114 &868125045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +216,7 @@ MonoBehaviour:
   throwSound: {fileID: 8300000, guid: 1617a9f6a29287d4098cc7e0ed626970, type: 3}
   scrollSound: {fileID: 8300000, guid: 7d0fe826a4e8c4e428f258587fcf281a, type: 3}
   errorSound: {fileID: 8300000, guid: 93bc891b3a2b604408a37fcb2fd58096, type: 3}
+  distanceRayOffset: 0.485
   offset: 1
 --- !u!70 &3057258051173056583
 CapsuleCollider2D:
@@ -230,3 +234,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.36, y: 0.24}
   m_Direction: 1
+--- !u!95 &868125039
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466132100793970139}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35c059a03fb0e914fb48c149cc80e60c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
