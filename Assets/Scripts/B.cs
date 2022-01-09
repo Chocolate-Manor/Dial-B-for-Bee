@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,8 +41,6 @@ public class B : MonoBehaviour, IDamagable
     // Update is called once per frame
     void Update()
     {
-        
-        
         
         if (!PauseMenu.IsPaused)
         {
@@ -84,7 +83,6 @@ public class B : MonoBehaviour, IDamagable
        
         Color rayColor = hit.distance == 0 ? Color.white : Color.red;
         Debug.DrawRay(ray.origin, ray.direction * maxDist, rayColor);
-        Debug.Log(hit.distance);
          
         return hit.distance;           
     }
