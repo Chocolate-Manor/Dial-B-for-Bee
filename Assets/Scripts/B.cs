@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +22,8 @@ public class B : MonoBehaviour, IDamagable
     [SerializeField] private AudioClip scrollSound;
 
     [SerializeField] private AudioClip errorSound;
-
+    
+    [SerializeField] private float distanceRayOffset = 0.485f;
 
     // index of currently selected bug
     private int _selectedBug;
@@ -31,17 +32,16 @@ public class B : MonoBehaviour, IDamagable
     public float offset = 2;
 
     
-    
     private void Start()
     {
         LoadBugCounts();
         indexOfLadybug = bugNames.FindIndex(x => x.Equals("Ladybug"));
     }
 
-    
     // Update is called once per frame
     void Update()
     {
+        
         if (!PauseMenu.IsPaused)
         {
             // update selected bugg
@@ -49,15 +49,15 @@ public class B : MonoBehaviour, IDamagable
 
             // update inventory UI 
             InventoryUIControl();
-
-            // shoot selected bug if there is inventory for it
-            if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
+            
+            // shoot selected bugg if there is inventory for it (if dist=0 then no collision)
+            float dist = DistanceToColliders(0.5f);
+            if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0 && dist == 0)
             {
                 GameManager.Instance.PlaySoundEffect(throwSound);
                 bugCounts[_selectedBug] -= 1;
-                var bullet =
-                    Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
-                        Quaternion.identity) as GameObject;
+                var bullet = Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
+                    Quaternion.identity);
                 bullet.transform.rotation = transform.rotation;
                 if (_selectedBug == indexOfLadybug)
                 {
@@ -65,7 +65,7 @@ public class B : MonoBehaviour, IDamagable
                     ladybug.isPickable = false;
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] <= 0)
+            else if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 GameManager.Instance.PlaySoundEffect(errorSound);
             }
@@ -75,24 +75,17 @@ public class B : MonoBehaviour, IDamagable
         }
     }
 
-    // /// <summary>
-    // /// Controls the flashlight. Put in update.
-    // /// Also set if flashlight is on in game manager. 
-    // /// </summary>
-    // private void FlashlightControl()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Space))
-    //     {
-    //         GameManager.instance.PlaySoundEffect(flashlightSound);
-    //         flashlight.SetActive(true);
-    //     }
-    //
-    //     if (Input.GetKeyUp(KeyCode.Space))
-    //     {
-    //         GameManager.instance.PlaySoundEffect(flashlightSound);
-    //         flashlight.SetActive(false);
-    //     }
-    // }
+    private float DistanceToColliders(float maxDist)
+    {
+        // ray starting at player (with offset) and in direction its facing
+        Ray ray = new Ray(transform.position + distanceRayOffset * transform.up, transform.up);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, maxDist);
+       
+        Color rayColor = hit.distance == 0 ? Color.white : Color.red;
+        Debug.DrawRay(ray.origin, ray.direction * maxDist, rayColor);
+         
+        return hit.distance;           
+    }
 
     /// <summary>
     /// Read scrollbar to update selected bug
