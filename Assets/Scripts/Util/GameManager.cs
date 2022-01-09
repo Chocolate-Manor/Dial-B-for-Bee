@@ -63,8 +63,19 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     {
         mainAudioSource.PlayOneShot(clip);
     }
-
-
+    
+    /// <summary>
+    /// Changes the current background music.
+    /// </summary>
+    /// <param name="clip"></param>
+    public void PlayBackgroundMusic(AudioClip clip)
+    {
+        if (clip != mainAudioSource.clip)
+        {
+            mainAudioSource.clip = clip;
+            mainAudioSource.Play();
+        }
+    }
 
 
 }
