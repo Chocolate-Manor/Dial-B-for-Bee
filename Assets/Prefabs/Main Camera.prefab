@@ -190,5 +190,5 @@ MonoBehaviour:
   y: 3
   width: 960
   height: 540
-  onAwake: 1
-  onUpdate: 0
+  onAwake: 0
+  onUpdate: 1
