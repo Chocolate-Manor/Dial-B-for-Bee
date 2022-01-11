@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 868125045}
   - component: {fileID: 3057258051173056583}
   - component: {fileID: 868125039}
+  - component: {fileID: 5064019595981012259}
   m_Layer: 0
   m_Name: B
   m_TagString: Player
@@ -314,7 +315,7 @@ MonoBehaviour:
   - {x: -0.17834324, y: -0.058458403, z: -0.000000019152788}
   m_ShapePathHash: 1644795684
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1298
+  m_InstanceId: 36120
 --- !u!114 &868125045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,8 +361,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.36, y: 0.24}
+  m_Offset: {x: -0.0000000042363784, y: -0.03555145}
+  m_Size: {x: 0.36000004, y: 0.1688991}
   m_Direction: 1
 --- !u!95 &868125039
 Animator:
@@ -382,3 +383,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &5064019595981012259
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466132100793970139}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000117872805, y: 0.038666748}
+  m_Size: {x: 0.16858855, y: 0.16443543}
+  m_Direction: 1
