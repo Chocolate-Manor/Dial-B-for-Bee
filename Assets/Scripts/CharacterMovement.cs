@@ -43,7 +43,7 @@ public class CharacterMovement : MonoBehaviour
             animator.SetFloat("Blend",  velocityInDirection);
 
             bool hasInput = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0; 
-            if (Mathf.Abs(velocityInDirection) > 0.7 && hasInput)
+            if (hasInput)
             {
                 animator.SetBool("isWalking", true);
             }
