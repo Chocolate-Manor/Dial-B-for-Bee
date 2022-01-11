@@ -30,12 +30,14 @@ public class CharacterMovement : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
+        
+        animator.SetFloat("Blend", Input.GetAxis("Horizontal") + Input.GetAxis("Vertical"));
     }
 
     private void FixedUpdate()
     {
         // var moveVelocity = moveInput * speed;
-        var moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        var moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         rb.velocity = moveInput * speed;
     }
     
