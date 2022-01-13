@@ -18,9 +18,7 @@ public class B : MonoBehaviour, IDamagable
     public Image selectedBugImg;
 
     [SerializeField] private AudioClip throwSound;
-
-    [SerializeField] private AudioClip scrollSound;
-
+    
     [SerializeField] private AudioClip errorSound;
 
 
@@ -44,12 +42,6 @@ public class B : MonoBehaviour, IDamagable
     {
         if (!PauseMenu.IsPaused)
         {
-            // update selected bugg
-            InventoryControl();
-
-            // update inventory UI 
-            InventoryUIControl();
-
             // shoot selected bug if there is inventory for it
             if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
             {
@@ -69,61 +61,9 @@ public class B : MonoBehaviour, IDamagable
             {
                 GameManager.Instance.PlaySoundEffect(errorSound);
             }
-
-            //flashlight
-            //FlashlightControl();
         }
     }
-
-    // /// <summary>
-    // /// Controls the flashlight. Put in update.
-    // /// Also set if flashlight is on in game manager. 
-    // /// </summary>
-    // private void FlashlightControl()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Space))
-    //     {
-    //         GameManager.instance.PlaySoundEffect(flashlightSound);
-    //         flashlight.SetActive(true);
-    //     }
-    //
-    //     if (Input.GetKeyUp(KeyCode.Space))
-    //     {
-    //         GameManager.instance.PlaySoundEffect(flashlightSound);
-    //         flashlight.SetActive(false);
-    //     }
-    // }
-
-    /// <summary>
-    /// Read scrollbar to update selected bug
-    /// </summary>
-    private void InventoryControl()
-    {
-        // Check mouse wheel to change selected bugg
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-        {
-            GameManager.Instance.PlaySoundEffect(scrollSound);
-            if (_selectedBug >= bugs.Count - 1)
-                _selectedBug = 0;
-            else
-                _selectedBug += 1;
-        }
-
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-        {
-            GameManager.Instance.PlaySoundEffect(scrollSound);
-            if (_selectedBug <= 0)
-                _selectedBug = bugs.Count - 1;
-            else
-                _selectedBug -= 1;
-        }
-    }
-
-    private void InventoryUIControl()
-    {
-        bugCountText.text = bugCounts[_selectedBug].ToString();
-        selectedBugImg.sprite = bugSprites[_selectedBug];
-    }
+    
 
     public void Damage()
     {

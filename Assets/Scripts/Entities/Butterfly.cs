@@ -14,7 +14,7 @@ public class Butterfly : Bug, IProjectile
     // Start is called before the first frame update
     void Start()
     {
-        this.name = "Butterfly";
+        this.bugName = "Butterfly";
         rb.AddForce(transform.right * speed);
         //Destroy(gameObject, lifeSpan);
         hasHit = (speed == 0);

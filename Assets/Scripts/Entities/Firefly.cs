@@ -12,7 +12,7 @@ public class Firefly : Bug, IDamagable
     // Start is called before the first frame update
     void Start()
     {
-        this.name = "Firefly";
+        this.bugName = "Firefly";
     }
 
     // Update is called once per frame

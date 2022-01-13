@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bug : MonoBehaviour
 {
-    public string name;
+    public string bugName;
     public bool isPickable = true;
     public AudioClip pickupSound;
     
@@ -10,7 +10,7 @@ public class Bug : MonoBehaviour
     {
         if (isPickable)
         {
-            int index = player.bugNames.FindIndex(x => x.Equals(name));
+            int index = player.bugNames.FindIndex(x => x.Equals(bugName));
             player.bugCounts[index]++;
             GameManager.Instance.PlaySoundEffect(pickupSound);
         }

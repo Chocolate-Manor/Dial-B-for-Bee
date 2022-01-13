@@ -22,7 +22,7 @@ public class Ladybug : Bug
     // Start is called before the first frame update
     void Start()
     {
-        this.name = "Ladybug";
+        this.bugName = "Ladybug";
         initializationTime = Time.timeSinceLevelLoad;
         rb.AddForce(transform.up * speed);
 

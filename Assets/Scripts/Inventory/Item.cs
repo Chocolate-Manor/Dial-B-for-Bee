@@ -2,36 +2,36 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private int _id;
-    [SerializeField] private string _name;
-    [SerializeField] private string _description;
-    [SerializeField] private Sprite _icon;
+    [SerializeField] private int id;
+    [SerializeField] private string itemName;
+    [SerializeField] private string description;
+    [SerializeField] private Sprite icon;
 
-    public Item(int id, string name, string description, Sprite icon)
+    public Item(int id, string itemName, string description, Sprite icon)
     {
-        this._id = id;
-        this._name = name;
-        this._description = description;
-        this._icon = icon;
+        this.id = id;
+        this.itemName = itemName;
+        this.description = description;
+        this.icon = icon;
     }
 
     public int GetId()
     {
-        return this._id;
+        return this.id;
     }
 
     public string GetName()
     {
-        return this._name;
+        return this.itemName;
     }
 
     public string GetDescription()
     {
-        return this._description;
+        return this.description;
     }
 
     public Sprite GetIcon()
     {
-        return this._icon;
+        return this.icon;
     }
 }

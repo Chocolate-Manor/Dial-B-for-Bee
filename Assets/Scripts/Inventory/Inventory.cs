@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace Inventory
 {
-    public struct InventoryEntry
+    public class InventoryEntry
     {
         public Item Item;
         public int Count;
@@ -32,38 +33,75 @@ namespace Inventory
 
     public class Inventory : MonoBehaviour
     {
-        private Dictionary<int, InventoryEntry> _items;
+        private HashSet<int> _itemIds;
+        private LinkedList<InventoryEntry> _itemsList;
+        private LinkedListNode<InventoryEntry> _finger;
 
         public Inventory()
         {
-            _items = new Dictionary<int, InventoryEntry>();
+            // _items = new Dictionary<int, InventoryEntry>();
+            _itemsList = new LinkedList<InventoryEntry>();
+            _itemIds = new HashSet<int>();
         }
 
 
         public bool ContainsItem(int itemId)
         {
-            return _items.ContainsKey(itemId);
+            return _itemIds.Contains(itemId);
         }
 
         public int GetCount(int itemId)
         {
-            if (!_items.ContainsKey(itemId))
+            if (!_itemIds.Contains(itemId))
             {
                 return 0;
             }
 
-            return _items[itemId].Count;
+            int res = 0;
+            foreach (InventoryEntry inventoryEntry in _itemsList)
+            {
+                if (inventoryEntry.Item.GetId() == itemId)
+                {
+                    res = inventoryEntry.Count;
+                    break;
+                }
+            }
+
+            return res;
         }
 
         public void AddItem(Item item)
         {
-            if (_items.ContainsKey(item.GetId()))
+            if (_itemIds.Contains(item.GetId()))
             {
-                _items[item.GetId()].IncreaseCount();
+                this.IncreaseCountByItemId(item.GetId());
             }
             else
             {
-                _items.Add(item.GetId(), new InventoryEntry(item, 1));
+                _itemIds.Add(item.GetId());
+                _itemsList.AddLast(new InventoryEntry(item, 1));
+            }
+        }
+
+        private void IncreaseCountByItemId(int id)
+        {
+            foreach (InventoryEntry itemEntry in _itemsList)
+            {
+                if (itemEntry.Item.GetId() == id)
+                {
+                    itemEntry.IncreaseCount();
+                }
+            }
+        }
+
+        private void DecreaseCountByItemId(int id)
+        {
+            foreach (InventoryEntry itemEntry in _itemsList)
+            {
+                if (itemEntry.Item.GetId() == id)
+                {
+                    itemEntry.IncreaseCount();
+                }
             }
         }
 
@@ -74,19 +112,28 @@ namespace Inventory
 
         public void RemoveItem(int itemId)
         {
-            if (_items.ContainsKey(itemId))
+            if (_itemIds.Contains(itemId))
             {
-                _items[itemId].DecreaseCount();
-                if (_items[itemId].Count == 0)
+                foreach (InventoryEntry inventoryEntry in _itemsList)
                 {
-                    _items.Remove(itemId);
+                    if (inventoryEntry.Item.GetId() == itemId)
+                    {
+                        inventoryEntry.DecreaseCount();
+                        if (inventoryEntry.Count <= 0)
+                        {
+                            _itemsList.Remove(inventoryEntry);
+                        }
+
+                        break;
+                    }
                 }
             }
         }
 
         public void Clear()
         {
-            _items = new Dictionary<int, InventoryEntry>();
+            _itemIds = new HashSet<int>();
+            _itemsList = new LinkedList<InventoryEntry>();
         }
 
         public void ClearItem(Item item)
@@ -96,12 +143,42 @@ namespace Inventory
 
         public void ClearItem(int itemId)
         {
-            _items.Remove(itemId);
+            _itemIds.Remove(itemId);
+            //TODO REMOVE FROM LINKED LIST
         }
 
         public List<InventoryEntry> GetAllItems()
         {
-            return _items.Values.ToList();
+            return _itemsList.ToList();
+        }
+
+        public int GetUniqueItemCount()
+        {
+            return _itemsList.Count;
+        }
+
+        public InventoryEntry GetNext()
+        {
+            if (_finger == null)
+            {
+                _finger = _itemsList.First;
+            }
+
+            InventoryEntry res = _finger.Value;
+            _finger = _finger.Next;
+            return res;
+        }
+
+        public InventoryEntry GetPrevious()
+        {
+            if (_finger == null)
+            {
+                _finger = _itemsList.Last;
+            }
+
+            InventoryEntry res = _finger.Value;
+            _finger = _finger.Previous;
+            return res;
         }
     }
 }
