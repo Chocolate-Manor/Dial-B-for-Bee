@@ -60,7 +60,7 @@ namespace Inventory
             int res = 0;
             foreach (InventoryEntry inventoryEntry in _itemsList)
             {
-                if (inventoryEntry.Item.GetId() == itemId)
+                if (inventoryEntry.Item.id == itemId)
                 {
                     res = inventoryEntry.Count;
                     break;
@@ -72,13 +72,13 @@ namespace Inventory
 
         public void AddItem(Item item)
         {
-            if (_itemIds.Contains(item.GetId()))
+            if (_itemIds.Contains(item.id))
             {
-                this.IncreaseCountByItemId(item.GetId());
+                this.IncreaseCountByItemId(item.id);
             }
             else
             {
-                _itemIds.Add(item.GetId());
+                _itemIds.Add(item.id);
                 _itemsList.AddLast(new InventoryEntry(item, 1));
             }
         }
@@ -87,7 +87,7 @@ namespace Inventory
         {
             foreach (InventoryEntry itemEntry in _itemsList)
             {
-                if (itemEntry.Item.GetId() == id)
+                if (itemEntry.Item.id == id)
                 {
                     itemEntry.IncreaseCount();
                 }
@@ -98,7 +98,7 @@ namespace Inventory
         {
             foreach (InventoryEntry itemEntry in _itemsList)
             {
-                if (itemEntry.Item.GetId() == id)
+                if (itemEntry.Item.id == id)
                 {
                     itemEntry.IncreaseCount();
                 }
@@ -107,7 +107,7 @@ namespace Inventory
 
         public void RemoveItem(Item item)
         {
-            this.RemoveItem(item.GetId());
+            this.RemoveItem(item.id);
         }
 
         public void RemoveItem(int itemId)
@@ -116,7 +116,7 @@ namespace Inventory
             {
                 foreach (InventoryEntry inventoryEntry in _itemsList)
                 {
-                    if (inventoryEntry.Item.GetId() == itemId)
+                    if (inventoryEntry.Item.id == itemId)
                     {
                         inventoryEntry.DecreaseCount();
                         if (inventoryEntry.Count <= 0)
@@ -138,7 +138,7 @@ namespace Inventory
 
         public void ClearItem(Item item)
         {
-            this.ClearItem(item.GetId());
+            this.ClearItem(item.id);
         }
 
         public void ClearItem(int itemId)
@@ -157,6 +157,7 @@ namespace Inventory
             return _itemsList.Count;
         }
 
+        //TODO: Add docs
         public InventoryEntry GetNext()
         {
             if (_finger == null)
@@ -164,20 +165,30 @@ namespace Inventory
                 _finger = _itemsList.First;
             }
 
-            InventoryEntry res = _finger.Value;
-            _finger = _finger.Next;
+            InventoryEntry res = null;
+            if (_finger != null)
+            {
+                res = _finger.Value;
+                _finger = _finger.Next;
+            }
+
             return res;
         }
-
+        
+        //TODO: Add docs
         public InventoryEntry GetPrevious()
         {
             if (_finger == null)
             {
                 _finger = _itemsList.Last;
             }
-
-            InventoryEntry res = _finger.Value;
-            _finger = _finger.Previous;
+            
+            InventoryEntry res = null;
+            if (_finger != null)
+            {
+                res = _finger.Value;
+                _finger = _finger.Previous;
+            }
             return res;
         }
     }

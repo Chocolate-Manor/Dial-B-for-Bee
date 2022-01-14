@@ -14,6 +14,12 @@ namespace Inventory
 
         private InventoryEntry _selectedInventoryEntry;
 
+        private void Start()
+        {
+            countText.enabled = false;
+            selectedItemImage.enabled = false;
+        }
+
         private void Update()
         {
             UpdateSelectedItem();
@@ -38,8 +44,16 @@ namespace Inventory
 
         private void UpdateInventoryUI()
         {
-            countText.text = _selectedInventoryEntry.Count.ToString();
-            selectedItemImage.sprite = _selectedInventoryEntry.Item.GetIcon();
+            if (_selectedInventoryEntry != null)
+            {
+                countText.text = _selectedInventoryEntry.Count.ToString();
+                selectedItemImage.sprite = _selectedInventoryEntry.Item.icon;
+            }
+        }
+
+        public Item GetCurrentlySelectedItem()
+        {
+            return _selectedInventoryEntry.Item;
         }
     }
 }

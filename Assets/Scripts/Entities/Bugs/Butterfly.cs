@@ -28,13 +28,7 @@ public class Butterfly : Bug, IProjectile
             OnHitBehavior(other);
             OnHitDamage(other);
         }
-        
-        if (other.gameObject.tag == "Player")
-        {
-            B b = other.gameObject.GetComponent<B>();
-            PickMeUp(b);
-            Destroy(gameObject);
-        }
+        PickMeUp(other.gameObject);
     }
 
     public void OnHitBehavior(Collision2D other)

@@ -246,7 +246,7 @@ MonoBehaviour:
   inventory: {fileID: -1374959698874111189}
   countText: {fileID: 0}
   selectedItemImage: {fileID: 0}
-  scrollSound: {fileID: 0}
+  scrollSound: {fileID: 8300000, guid: 7d0fe826a4e8c4e428f258587fcf281a, type: 3}
 --- !u!114 &-1374959698874111189
 MonoBehaviour:
   m_ObjectHideFlags: 0

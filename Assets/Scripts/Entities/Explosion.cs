@@ -8,7 +8,7 @@ public class Explosion : MonoBehaviour
     private Vector3 explosionPos;
     [SerializeField] private CircleCollider2D explosionArea;
     [SerializeField] private ParticleSystem explosionParticle;
-    [SerializeField] private GameObject light;
+    [SerializeField] private new GameObject light;
     [SerializeField] private Animator ani;
     [SerializeField] private AudioClip explosionSound;
     

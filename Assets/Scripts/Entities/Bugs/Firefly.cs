@@ -28,11 +28,6 @@ public class Firefly : Bug, IDamagable
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            B b = other.gameObject.GetComponent<B>();
-            PickMeUp(b);
-            Destroy(gameObject);
-        }
+        PickMeUp(other.gameObject);
     }
 }
