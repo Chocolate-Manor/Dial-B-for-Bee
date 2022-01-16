@@ -210,8 +210,7 @@ MonoBehaviour:
   - Butterfly
   - Firefly
   - Ladybug
-  bugCountText: {fileID: 0}
-  selectedBugImg: {fileID: 0}
+  inventoryManager: {fileID: 5476498543420630716}
   throwSound: {fileID: 8300000, guid: 1617a9f6a29287d4098cc7e0ed626970, type: 3}
   errorSound: {fileID: 8300000, guid: 93bc891b3a2b604408a37fcb2fd58096, type: 3}
   offset: 1

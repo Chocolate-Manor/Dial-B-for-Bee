@@ -64,12 +64,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7790808051121451618, guid: 5bd5edb17b070344ebf64019ea234d37, type: 3}
+      propertyPath: bugName
+      value: Butterfly
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790808051121451618, guid: 5bd5edb17b070344ebf64019ea234d37, type: 3}
       propertyPath: pickupSound
       value: 
       objectReference: {fileID: 8300000, guid: 7253581a39ea96a4a8844c839ca524ee, type: 3}
     - target: {fileID: 7790808051121451618, guid: 5bd5edb17b070344ebf64019ea234d37, type: 3}
       propertyPath: associatedItem
       value: 
-      objectReference: {fileID: 11400000, guid: bee1a917c2b061142b60f112c1bd7b1b, type: 2}
+      objectReference: {fileID: 11400000, guid: f23462c3de6eeda69b103395acfb3bab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bd5edb17b070344ebf64019ea234d37, type: 3}

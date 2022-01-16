@@ -104,12 +104,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3499596081660365759, guid: 294d81aba2ffdb722ab7a2f6dbe0d98c, type: 3}
+      propertyPath: bugName
+      value: Firefly
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499596081660365759, guid: 294d81aba2ffdb722ab7a2f6dbe0d98c, type: 3}
       propertyPath: pickupSound
       value: 
       objectReference: {fileID: 8300000, guid: 7253581a39ea96a4a8844c839ca524ee, type: 3}
     - target: {fileID: 3499596081660365759, guid: 294d81aba2ffdb722ab7a2f6dbe0d98c, type: 3}
       propertyPath: associatedItem
       value: 
-      objectReference: {fileID: 11400000, guid: 58980ad41ea76e14c9724d0146096618, type: 2}
+      objectReference: {fileID: 11400000, guid: 59c8e1f5b3c840c95a3128be477f5d13, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 294d81aba2ffdb722ab7a2f6dbe0d98c, type: 3}

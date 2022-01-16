@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Inventory;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,12 +14,8 @@ public class B : MonoBehaviour, IDamagable
     public List<Sprite> bugSprites;
     public List<String> bugNames;
 
-    // the text object for amount of bugs
-    public TextMeshProUGUI bugCountText;
-    public Image selectedBugImg;
-
+    [SerializeField] private BInventoryManager inventoryManager;
     [SerializeField] private AudioClip throwSound;
-    
     [SerializeField] private AudioClip errorSound;
 
 
@@ -32,8 +29,8 @@ public class B : MonoBehaviour, IDamagable
     
     private void Start()
     {
-        LoadBugCounts();
-        indexOfLadybug = bugNames.FindIndex(x => x.Equals("Ladybug"));
+        // LoadBugCounts();
+        // indexOfLadybug = bugNames.FindIndex(x => x.Equals("Ladybug"));
     }
 
     
@@ -43,21 +40,15 @@ public class B : MonoBehaviour, IDamagable
         if (!PauseMenu.IsPaused)
         {
             // shoot selected bug if there is inventory for it
-            if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] > 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && inventoryManager.HasItem())
             {
+                Item currentItem = inventoryManager.GetCurrentlySelectedItem();
                 GameManager.Instance.PlaySoundEffect(throwSound);
-                bugCounts[_selectedBug] -= 1;
-                var bullet =
-                    Instantiate(bugs[_selectedBug], transform.position + transform.up * offset,
-                        Quaternion.identity) as GameObject;
+                GameObject bullet = Instantiate(currentItem.associatedPrefab, transform.position + transform.up * offset,
+                        Quaternion.identity);
                 bullet.transform.rotation = transform.rotation;
-                if (_selectedBug == indexOfLadybug)
-                {
-                    Ladybug ladybug = bullet.GetComponent<Ladybug>();
-                    ladybug.isPickable = false;
-                }
             }
-            else if (Input.GetKeyDown(KeyCode.Mouse0) && bugCounts[_selectedBug] <= 0)
+            else if (Input.GetKeyDown(KeyCode.Mouse0) && !inventoryManager.HasItem())
             {
                 GameManager.Instance.PlaySoundEffect(errorSound);
             }
@@ -69,29 +60,5 @@ public class B : MonoBehaviour, IDamagable
     {
         GameManager.Instance.ReloadAfterDelay();
         gameObject.SetActive(false);
-    }
-
-    private void LoadBugCounts()
-    {
-        for (int i = 0; i < bugs.Count; i++)
-        {
-            if (PlayerPrefs.HasKey(bugNames[i]))
-            {
-                bugCounts[i] = PlayerPrefs.GetInt(bugNames[i]);
-            }
-            else
-            {
-                PlayerPrefs.SetInt(bugNames[i], 0);
-                bugCounts[i] = 0;
-            }
-        }
-    }
-
-    public void SaveBugCounts()
-    {
-        for (int i = 0; i < bugs.Count; i++)
-        {
-            PlayerPrefs.SetInt(bugNames[i], bugCounts[i]);
-        }
     }
 }

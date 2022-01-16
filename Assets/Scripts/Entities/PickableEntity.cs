@@ -2,12 +2,12 @@
 
 namespace Entities
 {
-    public class PickableEntity : MonoBehaviour
+    public abstract class PickableEntity : MonoBehaviour
     {
         [SerializeField] private Item associatedItem;
 
 
-        public void PickMeUp(GameObject other)
+        protected void PickMeUp(GameObject other)
         {
             Inventory.Inventory inventory = other.GetComponent<Inventory.Inventory>();
             if (inventory != null)

@@ -100,9 +100,20 @@ namespace Inventory
             {
                 if (itemEntry.Item.id == id)
                 {
-                    itemEntry.IncreaseCount();
+                    itemEntry.DecreaseCount();
+                    if (itemEntry.Count == 0)
+                    {
+                        _itemIds.Remove(itemEntry.Item.id);
+                        _itemsList.Remove(itemEntry);
+                        break;
+                    }
                 }
             }
+        }
+
+        public void DecreaseItemAmount(Item item)
+        {
+            DecreaseCountByItemId(item.id);
         }
 
         public void RemoveItem(Item item)

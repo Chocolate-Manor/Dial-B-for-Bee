@@ -13,7 +13,6 @@ public class LevelLoader : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            b.SaveBugCounts();
             SceneManager.LoadScene(levelToLoad);
         }
     }
