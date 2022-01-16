@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a4b2c36080b3c43870d86eaaf018c6, type: 3}
+  m_Name: 1 run
+  m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 8300000, guid: 8364888ea0d9872479e5ea12d72aa734, type: 3}
+  dialogueLines:
+  - sprite: {fileID: 21300000, guid: c2bc9e4f4dc86e341bcc8c568ecbbd94, type: 3}
+    isImage: 1
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 3
+    text: ...
+  - sprite: {fileID: 0}
+    isImage: 0
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 3
+    text: Run, my little buttercup.
+  - sprite: {fileID: 21300000, guid: c2bc9e4f4dc86e341bcc8c568ecbbd94, type: 3}
+    isImage: 1
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 2
+    text: ...
+  - sprite: {fileID: 0}
+    isImage: 0
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 3
+    text: And don't look back.
+  - sprite: {fileID: 0}
+    isImage: 0
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 3
+    text: Mom will always...
+  - sprite: {fileID: 0}
+    isImage: 0
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 2
+    text: '`GASP`'
+  - sprite: {fileID: 21300000, guid: 52c332bdf2cbc2f46a839ea4e13402bb, type: 3}
+    isImage: 1
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 2
+    text: 
+  - sprite: {fileID: 21300000, guid: 50769658cbcb27e4e8371400d6aaf049, type: 3}
+    isImage: 1
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 2
+    text: 
+  - sprite: {fileID: 0}
+    isImage: 0
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 2
+    text: She's, here-
+  - sprite: {fileID: 0}
+    isImage: 0
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 3
+    text: 'Find Claude-
+
+      He will-'
+  - sprite: {fileID: 21300000, guid: 690575aeee55f81469fa1c4b9bf5bc1c, type: 3}
+    isImage: 1
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 2
+    text: 
+  - sprite: {fileID: 21300000, guid: 33129ed564779f34589f4e787106edee, type: 3}
+    isImage: 1
+    textSize: 80
+    switchMusic: 0
+    musicToSwitchTo: {fileID: 0}
+    playClip: 0
+    clipToPlay: {fileID: 0}
+    duration: 2
+    text: 
