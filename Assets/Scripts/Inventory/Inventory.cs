@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Inventory
@@ -39,7 +36,6 @@ namespace Inventory
 
         public Inventory()
         {
-            // _items = new Dictionary<int, InventoryEntry>();
             _itemsList = new LinkedList<InventoryEntry>();
             _itemIds = new HashSet<int>();
         }
@@ -141,6 +137,9 @@ namespace Inventory
             }
         }
 
+        /// <summary>
+        /// Removes all items from the inventory.
+        /// </summary>
         public void Clear()
         {
             _itemIds = new HashSet<int>();
@@ -155,20 +154,27 @@ namespace Inventory
         public void ClearItem(int itemId)
         {
             _itemIds.Remove(itemId);
-            //TODO REMOVE FROM LINKED LIST
+            RemoveItem(itemId);
         }
-
-        public List<InventoryEntry> GetAllItems()
-        {
-            return _itemsList.ToList();
-        }
-
+        
+        /// <summary>
+        /// Returns the number of unique items in
+        /// the inventory.
+        /// </summary>
+        /// <returns>The number of unique items in the inventory</returns>
         public int GetUniqueItemCount()
         {
             return _itemsList.Count;
         }
 
-        //TODO: Add docs
+        /// <summary>
+        /// Returns the next entry (in order of additions) in the inventory.
+        /// If the current entry is the last one,
+        /// it wraps around.
+        /// If the inventory is empty it returns
+        /// null.
+        /// </summary>
+        /// <returns>The next inventory entry</returns>
         public InventoryEntry GetNext()
         {
             if (_finger == null)
@@ -186,7 +192,14 @@ namespace Inventory
             return res;
         }
         
-        //TODO: Add docs
+        /// <summary>
+        /// Returns the previous entry (in order of additions) in the inventory.
+        /// If the current entry is the first one,
+        /// it wraps around.
+        /// If the inventory is empty it returns
+        /// null.
+        /// </summary>
+        /// <returns>The next inventory entry</returns>
         public InventoryEntry GetPrevious()
         {
             if (_finger == null)

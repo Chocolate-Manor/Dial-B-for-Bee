@@ -25,6 +25,9 @@ namespace Inventory
             UpdateSelectedItem();
         }
 
+        /// <summary>
+        /// The main method responsible for changing what item is selected.
+        /// </summary>
         private void UpdateSelectedItem()
         {
             if (selectedInventoryEntry == null && inventory.GetUniqueItemCount() > 0)
@@ -48,14 +51,20 @@ namespace Inventory
             UpdateInventoryUI();
         }
 
+        /// <summary>
+        /// Updates the inventory UI.
+        /// </summary>
         private void UpdateInventoryUI()
         {
+            //if no item selected, turn of the 
+            //UI elements.
             if (selectedInventoryEntry == null)
             {
                 countText.enabled = false;
                 selectedItemImage.enabled = false;
             }
 
+            //Re-enable the UI elements if there is a selected item.
             if (!countText.enabled && selectedInventoryEntry != null)
             {
                 countText.enabled = true;
@@ -74,6 +83,10 @@ namespace Inventory
             }
         }
 
+        /// <summary>
+        /// Returns the currently selected item.
+        /// </summary>
+        /// <returns>The item currently selected.</returns>
         public Item GetCurrentlySelectedItem()
         {
             if (selectedInventoryEntry == null)
@@ -87,9 +100,14 @@ namespace Inventory
             {
                 selectedInventoryEntry = inventory.GetNext();
             }
+
             return res;
         }
 
+        /// <summary>
+        /// Checks if there is an item selected.
+        /// </summary>
+        /// <returns>True iff there is an item selected.</returns>
         public bool HasItem()
         {
             return selectedInventoryEntry != null;

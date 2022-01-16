@@ -24,15 +24,6 @@ public class B : MonoBehaviour, IDamagable
     private int indexOfLadybug;
 
     public float offset = 2;
-
-    
-    
-    private void Start()
-    {
-        // LoadBugCounts();
-        // indexOfLadybug = bugNames.FindIndex(x => x.Equals("Ladybug"));
-    }
-
     
     // Update is called once per frame
     void Update()
