@@ -34,7 +34,7 @@ public class B : MonoBehaviour, IDamagable
                         Quaternion.identity);
                 bullet.transform.rotation = transform.rotation;
             }
-            else if (Input.GetKeyDown(KeyCode.Mouse0) && !inventoryManager.HasItem())
+            else if (Input.GetKeyDown(KeyCode.Mouse0) && (!inventoryManager.HasItem() || dist != 0))
             {
                 GameManager.Instance.PlaySoundEffect(errorSound);
             }
