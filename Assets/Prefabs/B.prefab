@@ -172,8 +172,8 @@ GameObject:
   - component: {fileID: 868125044}
   - component: {fileID: 868125045}
   - component: {fileID: 3057258051173056583}
-  - component: {fileID: 868125039}
-  - component: {fileID: 5064019595981012259}
+  - component: {fileID: 5476498543420630716}
+  - component: {fileID: -1374959698874111189}
   m_Layer: 0
   m_Name: B
   m_TagString: Player
@@ -341,10 +341,8 @@ MonoBehaviour:
   - Butterfly
   - Firefly
   - Ladybug
-  bugCountText: {fileID: 0}
-  selectedBugImg: {fileID: 0}
+  inventoryManager: {fileID: 5476498543420630716}
   throwSound: {fileID: 8300000, guid: 1617a9f6a29287d4098cc7e0ed626970, type: 3}
-  scrollSound: {fileID: 8300000, guid: 7d0fe826a4e8c4e428f258587fcf281a, type: 3}
   errorSound: {fileID: 8300000, guid: 93bc891b3a2b604408a37fcb2fd58096, type: 3}
   distanceRayOffset: 0.485
   offset: 1
@@ -399,3 +397,31 @@ CapsuleCollider2D:
   m_Offset: {x: 0.000117872805, y: 0.038666748}
   m_Size: {x: 0.16858855, y: 0.16443543}
   m_Direction: 1
+--- !u!114 &5476498543420630716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466132100793970139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa6d0081d2f4d01a44f3b8acf13697f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: -1374959698874111189}
+  countText: {fileID: 0}
+  selectedItemImage: {fileID: 0}
+  scrollSound: {fileID: 8300000, guid: 7d0fe826a4e8c4e428f258587fcf281a, type: 3}
+--- !u!114 &-1374959698874111189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466132100793970139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078cbc893d534e0a9e7b8caac1d69e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

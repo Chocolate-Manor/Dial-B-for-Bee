@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Butterfly : Bug, IProjectile
@@ -14,7 +11,7 @@ public class Butterfly : Bug, IProjectile
     // Start is called before the first frame update
     void Start()
     {
-        this.name = "Butterfly";
+        this.bugName = "Butterfly";
         rb.AddForce(transform.right * speed);
         //Destroy(gameObject, lifeSpan);
         hasHit = (speed == 0);
@@ -28,13 +25,7 @@ public class Butterfly : Bug, IProjectile
             OnHitBehavior(other);
             OnHitDamage(other);
         }
-        
-        if (other.gameObject.tag == "Player")
-        {
-            B b = other.gameObject.GetComponent<B>();
-            PickMeUp(b);
-            Destroy(gameObject);
-        }
+        PickMeUp(other.gameObject);
     }
 
     public void OnHitBehavior(Collision2D other)

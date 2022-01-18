@@ -250,7 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b070cabcec6911a43b7774b33306897e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: ButterFly
+  associatedItem: {fileID: 11400000, guid: f23462c3de6eeda69b103395acfb3bab, type: 2}
+  bugName: Butterfly
   isPickable: 1
   pickupSound: {fileID: 8300000, guid: 7253581a39ea96a4a8844c839ca524ee, type: 3}
   rb: {fileID: 4377735780202184611}
