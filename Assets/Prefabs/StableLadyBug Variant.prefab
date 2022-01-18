@@ -16,9 +16,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1350147074859597218, guid: 8756bef7a9a0e1811a75172663e73f1f, type: 3}
+      propertyPath: isPickable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350147074859597218, guid: 8756bef7a9a0e1811a75172663e73f1f, type: 3}
       propertyPath: pickupSound
       value: 
       objectReference: {fileID: 8300000, guid: 7253581a39ea96a4a8844c839ca524ee, type: 3}
+    - target: {fileID: 1350147074859597218, guid: 8756bef7a9a0e1811a75172663e73f1f, type: 3}
+      propertyPath: associatedItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b870f2f29a303138bc1bc2a0a1b539b, type: 2}
     - target: {fileID: 2050605717469462903, guid: 8756bef7a9a0e1811a75172663e73f1f, type: 3}
       propertyPath: m_BodyType
       value: 2

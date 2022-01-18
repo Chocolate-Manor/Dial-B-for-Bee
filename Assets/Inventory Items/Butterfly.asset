@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f06b46530614c17b470f7a486c98156, type: 3}
+  m_Name: Butterfly
+  m_EditorClassIdentifier: 
+  id: 2
+  name: Butterfly
+  description: A butterfly that is a knife. It is literally a butterfly knife.
+  icon: {fileID: 21300000, guid: 4212a6654d5471c4e92aa8893af0e8d6, type: 3}
+  associatedPrefab: {fileID: 1986201594248793897, guid: 5bd5edb17b070344ebf64019ea234d37, type: 3}

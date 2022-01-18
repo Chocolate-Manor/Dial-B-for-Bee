@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Firefly : Bug, IDamagable
@@ -12,7 +10,7 @@ public class Firefly : Bug, IDamagable
     // Start is called before the first frame update
     void Start()
     {
-        this.name = "Firefly";
+        this.bugName = "Firefly";
     }
 
     // Update is called once per frame
@@ -28,11 +26,6 @@ public class Firefly : Bug, IDamagable
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            B b = other.gameObject.GetComponent<B>();
-            PickMeUp(b);
-            Destroy(gameObject);
-        }
+        PickMeUp(other.gameObject);
     }
 }
