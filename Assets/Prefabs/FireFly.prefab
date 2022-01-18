@@ -147,10 +147,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3499596081660365758}
   - component: {fileID: 3499596081660365747}
-  - component: {fileID: 3499596081660365757}
   - component: {fileID: 3499596081660365756}
   - component: {fileID: 3499596081660365746}
   - component: {fileID: 3499596081660365759}
+  - component: {fileID: 4055734354157107181}
   m_Layer: 0
   m_Name: FireFly
   m_TagString: Detectable
@@ -231,14 +231,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!222 &3499596081660365757
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3499596081660365745}
-  m_CullTransparentMesh: 1
 --- !u!50 &3499596081660365756
 Rigidbody2D:
   serializedVersion: 4
@@ -294,6 +286,25 @@ MonoBehaviour:
   pickupSound: {fileID: 8300000, guid: 7253581a39ea96a4a8844c839ca524ee, type: 3}
   rb: {fileID: 3499596081660365756}
   speed: 2
+--- !u!95 &4055734354157107181
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499596081660365745}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3be9b30994f223749881b3bc7d407648, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3499596082814864992
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +315,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3499596082814864993}
   - component: {fileID: 3499596082814865004}
-  - component: {fileID: 3499596082814864995}
   m_Layer: 0
   m_Name: FireFly shadow
   m_TagString: Untagged
@@ -382,11 +392,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!222 &3499596082814864995
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3499596082814864992}
-  m_CullTransparentMesh: 1
