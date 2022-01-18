@@ -5,7 +5,9 @@ namespace Entities
     public abstract class PickableEntity : MonoBehaviour
     {
         [SerializeField] private Item associatedItem;
-
+        public bool isPickable = true;
+        public AudioClip pickupSound;
+        
         /// <summary>
         /// Responsible for adding this PickableEntity to the inventory of
         /// another object and destroying this instance.
@@ -18,6 +20,7 @@ namespace Entities
             Inventory.Inventory inventory = other.GetComponent<Inventory.Inventory>();
             if (inventory != null)
             {
+                GameManager.Instance.PlaySoundEffect(pickupSound);
                 inventory.AddItem(associatedItem);
                 Destroy(gameObject);
             }

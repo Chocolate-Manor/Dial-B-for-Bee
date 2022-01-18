@@ -8,16 +8,10 @@ using UnityEngine.UI;
 
 public class B : MonoBehaviour, IDamagable
 {
-    // list of available bugs and the amount of them in the inventory
-    public List<GameObject> bugs;
-    public List<int> bugCounts;
-    public List<Sprite> bugSprites;
-    public List<String> bugNames;
-
     [SerializeField] private BInventoryManager inventoryManager;
     [SerializeField] private AudioClip throwSound;
     [SerializeField] private AudioClip errorSound;
-
+    [SerializeField] private float distanceRayOffset = 0.485f;
 
     // index of currently selected bug
     private int _selectedBug;
@@ -31,7 +25,8 @@ public class B : MonoBehaviour, IDamagable
         if (!PauseMenu.IsPaused)
         {
             // shoot selected bug if there is inventory for it
-            if (Input.GetKeyDown(KeyCode.Mouse0) && inventoryManager.HasItem())
+            float dist = DistanceToColliders(0.5f);
+            if (Input.GetKeyDown(KeyCode.Mouse0) && inventoryManager.HasItem() && dist == 0)
             {
                 Item currentItem = inventoryManager.GetCurrentlySelectedItem();
                 GameManager.Instance.PlaySoundEffect(throwSound);
@@ -46,6 +41,19 @@ public class B : MonoBehaviour, IDamagable
         }
     }
     
+
+    private float DistanceToColliders(float maxDist)
+    {
+        // ray starting at player (with offset) and in direction its facing
+        Ray ray = new Ray(transform.position + distanceRayOffset * transform.up, transform.up);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, maxDist);
+       
+        //Debug drawing
+        //Color rayColor = hit.distance == 0 ? Color.white : Color.red;
+        //Debug.DrawRay(ray.origin, ray.direction * maxDist, rayColor);
+         
+        return hit.distance;           
+    }
 
     public void Damage()
     {
