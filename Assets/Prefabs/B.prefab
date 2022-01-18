@@ -174,6 +174,8 @@ GameObject:
   - component: {fileID: 3057258051173056583}
   - component: {fileID: 5476498543420630716}
   - component: {fileID: -1374959698874111189}
+  - component: {fileID: 5064019595981012259}
+  - component: {fileID: 868125039}
   m_Layer: 0
   m_Name: B
   m_TagString: Player
@@ -216,7 +218,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -315,7 +317,7 @@ MonoBehaviour:
   - {x: -0.17834324, y: -0.058458403, z: -0.000000019152788}
   m_ShapePathHash: 1644795684
   m_Mesh: {fileID: 0}
-  m_InstanceId: 36120
+  m_InstanceId: -14834
 --- !u!114 &868125045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,19 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0c42c36220a604aa94862fb4c754c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bugs:
-  - {fileID: 1986201594248793897, guid: 5bd5edb17b070344ebf64019ea234d37, type: 3}
-  - {fileID: 3499596081660365745, guid: 294d81aba2ffdb722ab7a2f6dbe0d98c, type: 3}
-  - {fileID: 5802382168588440715, guid: 8756bef7a9a0e1811a75172663e73f1f, type: 3}
-  bugCounts: 050000000500000005000000
-  bugSprites:
-  - {fileID: 21300000, guid: 4212a6654d5471c4e92aa8893af0e8d6, type: 3}
-  - {fileID: 21300000, guid: a0cc7197ff8da8f4e8721a53daf3b265, type: 3}
-  - {fileID: 21300000, guid: d70d72708a5352a4bb2dce5fafac644d, type: 3}
-  bugNames:
-  - Butterfly
-  - Firefly
-  - Ladybug
   inventoryManager: {fileID: 5476498543420630716}
   throwSound: {fileID: 8300000, guid: 1617a9f6a29287d4098cc7e0ed626970, type: 3}
   errorSound: {fileID: 8300000, guid: 93bc891b3a2b604408a37fcb2fd58096, type: 3}
@@ -361,41 +350,6 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.0000000042363784, y: -0.03555145}
   m_Size: {x: 0.36000004, y: 0.1688991}
-  m_Direction: 1
---- !u!95 &868125039
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5466132100793970139}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 35c059a03fb0e914fb48c149cc80e60c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!70 &5064019595981012259
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5466132100793970139}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.000117872805, y: 0.038666748}
-  m_Size: {x: 0.16858855, y: 0.16443543}
   m_Direction: 1
 --- !u!114 &5476498543420630716
 MonoBehaviour:
@@ -425,3 +379,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078cbc893d534e0a9e7b8caac1d69e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &5064019595981012259
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466132100793970139}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000117872805, y: 0.038666748}
+  m_Size: {x: 0.16858855, y: 0.16443543}
+  m_Direction: 1
+--- !u!95 &868125039
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5466132100793970139}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35c059a03fb0e914fb48c149cc80e60c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
