@@ -33,6 +33,8 @@ public class B : MonoBehaviour, IDamagable
                 GameObject bullet = Instantiate(currentItem.associatedPrefab, transform.position + transform.up * offset,
                         Quaternion.identity);
                 bullet.transform.rotation = transform.rotation;
+                //triggers UI fade in animation
+                GameManager.Instance.CallEventOnInventoryUpdated();
             }
             else if (Input.GetKeyDown(KeyCode.Mouse0) && (!inventoryManager.HasItem() || dist != 0))
             {

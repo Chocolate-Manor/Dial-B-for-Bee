@@ -11,18 +11,24 @@ namespace Inventory
         [SerializeField] private TextMeshProUGUI countText;
         [SerializeField] private Image selectedItemImage;
         [SerializeField] private AudioClip scrollSound;
+        [SerializeField] private Animator animator;
 
+        
         private InventoryEntry selectedInventoryEntry;
 
         private void Start()
         {
             countText.enabled = false;
             selectedItemImage.enabled = false;
+            
+            //make fade in Inventory an event that's callable. 
+            GameManager.OnInventoryUpdated += FadeInInventory;
         }
 
         private void Update()
         {
             UpdateSelectedItem();
+            
         }
 
         /// <summary>
@@ -33,6 +39,7 @@ namespace Inventory
             if (selectedInventoryEntry == null && inventory.GetUniqueItemCount() > 0)
             {
                 selectedInventoryEntry = inventory.GetNext();
+                FadeInInventory(); 
             }
 
             // Check mouse wheel to change selected item
@@ -40,15 +47,25 @@ namespace Inventory
             {
                 GameManager.Instance.PlaySoundEffect(scrollSound);
                 selectedInventoryEntry = inventory.GetNext();
+                FadeInInventory();
             }
 
             if (Input.GetAxis("Mouse ScrollWheel") < 0f)
             {
                 GameManager.Instance.PlaySoundEffect(scrollSound);
                 selectedInventoryEntry = inventory.GetPrevious();
+                FadeInInventory();
             }
 
             UpdateInventoryUI();
+        }
+        
+        /// <summary>
+        /// Triggers the fading in of inventory
+        /// </summary>
+        private void FadeInInventory()
+        {
+            animator.SetTrigger("hasInput");
         }
 
         /// <summary>
@@ -62,6 +79,7 @@ namespace Inventory
             {
                 countText.enabled = false;
                 selectedItemImage.enabled = false;
+
             }
 
             //Re-enable the UI elements if there is a selected item.

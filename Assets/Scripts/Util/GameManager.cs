@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
 
-    //public static GameManager instance { get; private set; }
+    public static event Action OnInventoryUpdated;
     
     //base.awake is called to make it singleton.
     protected override void Awake()
@@ -16,6 +16,11 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         lightsYouAreIlluminatedBy = new List<Collider2D>();
         DontDestroyOnLoad(gameObject);
 
+    }
+
+    public void CallEventOnInventoryUpdated()
+    {
+        OnInventoryUpdated();
     }
 
     private void Update()

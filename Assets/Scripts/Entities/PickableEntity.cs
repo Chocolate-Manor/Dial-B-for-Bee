@@ -15,7 +15,7 @@ namespace Entities
         /// attached nothing happens.
         /// </summary>
         /// <param name="other">The object to whose inventory this entity needs to be added.</param>
-        protected void PickMeUp(GameObject other)
+        protected virtual void PickMeUp(GameObject other)
         {
             Inventory.Inventory inventory = other.GetComponent<Inventory.Inventory>();
             if (inventory != null)
