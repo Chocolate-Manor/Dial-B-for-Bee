@@ -8,21 +8,31 @@ namespace Inventory
     public class BInventoryManager : MonoBehaviour
     {
         [SerializeField] private Inventory inventory;
-        [SerializeField] private TextMeshProUGUI countText;
-        [SerializeField] private Image selectedItemImage;
         [SerializeField] private AudioClip scrollSound;
-        [SerializeField] private Animator animator;
-
+        [SerializeField] private GameObject uiCanvasObject;
+        private UIManager uiManager;
+        private TextMeshProUGUI countText;
+        private Image selectedItemImage;
+        private Animator animator;
         
         private InventoryEntry selectedInventoryEntry;
 
+        
+        
         private void Start()
         {
+            //instantiate UI canvas
+            uiManager = Instantiate(uiCanvasObject).GetComponent<UIManager>();
+            countText = uiManager.getCountText();
+            selectedItemImage = uiManager.getSelectedItemImage();
+            animator = uiManager.getAnimator();
+            
             countText.enabled = false;
             selectedItemImage.enabled = false;
             
             //make fade in Inventory an event that's callable. 
             GameManager.OnInventoryUpdated += FadeInInventory;
+
         }
 
         private void Update()

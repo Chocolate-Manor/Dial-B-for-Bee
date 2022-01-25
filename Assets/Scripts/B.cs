@@ -6,19 +6,23 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class B : MonoBehaviour, IDamagable
+public class B : SingletonMonoBehavior<B>, IDamagable
 {
     [SerializeField] private BInventoryManager inventoryManager;
     [SerializeField] private AudioClip throwSound;
     [SerializeField] private AudioClip errorSound;
     [SerializeField] private float distanceRayOffset = 0.485f;
 
+    
     // index of currently selected bug
     private int _selectedBug;
     private int indexOfLadybug;
 
     public float offset = 2;
-    
+
+
+
+
     // Update is called once per frame
     void Update()
     {

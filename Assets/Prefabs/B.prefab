@@ -317,7 +317,7 @@ MonoBehaviour:
   - {x: -0.17834324, y: -0.058458403, z: -0.000000019152788}
   m_ShapePathHash: 1644795684
   m_Mesh: {fileID: 0}
-  m_InstanceId: -14834
+  m_InstanceId: -319670
 --- !u!114 &868125045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,9 +364,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: -1374959698874111189}
-  countText: {fileID: 0}
-  selectedItemImage: {fileID: 0}
   scrollSound: {fileID: 8300000, guid: 7d0fe826a4e8c4e428f258587fcf281a, type: 3}
+  uiCanvasObject: {fileID: 8400218824448425332, guid: 482e31d691f8ac4498977101659c04b0, type: 3}
 --- !u!114 &-1374959698874111189
 MonoBehaviour:
   m_ObjectHideFlags: 0
