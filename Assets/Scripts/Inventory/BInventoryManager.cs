@@ -30,9 +30,19 @@ namespace Inventory
             countText.enabled = false;
             selectedItemImage.enabled = false;
             
+
+        }
+
+        private void OnEnable()
+        {
             //make fade in Inventory an event that's callable. 
             GameManager.OnInventoryUpdated += FadeInInventory;
+        }
 
+        private void OnDisable()
+        {
+            //need to remove the listener in time
+            GameManager.OnInventoryUpdated -= FadeInInventory;
         }
 
         private void Update()
