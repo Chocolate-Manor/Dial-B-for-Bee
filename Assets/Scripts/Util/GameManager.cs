@@ -35,6 +35,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public List<Collider2D> lightsYouAreIlluminatedBy;
     public AudioSource mainAudioSource;
+    public AudioSource soundEffectsAudioSource;
     
     public void GameOver()
     {
@@ -66,7 +67,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public void PlaySoundEffect(AudioClip clip)
     {
-        mainAudioSource.PlayOneShot(clip);
+        soundEffectsAudioSource.PlayOneShot(clip);
     }
     
     /// <summary>
