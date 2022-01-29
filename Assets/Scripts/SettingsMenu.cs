@@ -27,21 +27,7 @@ public class SettingsMenu : MonoBehaviour
         resolutions = Screen.resolutions;
         resolutionDropdown.AddOptions(resolutions.Select(resolution => resolution.ToString()).ToList());
         LoadPreferences();
-        
-        // //Add all listeners
-        // lensDistortionToggle.onValueChanged.AddListener(delegate {  SetLensDistortion(lensDistortionToggle.isOn);  });
-        // fullScreenToggle.onValueChanged.AddListener(delegate {  SetFullScreen(fullScreenToggle.isOn);  });
-        // musicSlider.onValueChanged.AddListener(delegate {  SetMusicVolume(musicSlider.value);  });
-        // soundEffectsSlider.onValueChanged.AddListener(delegate {  SetSoundEffectVolume(soundEffectsSlider.value);  });
-        // resolutionDropdown.onValueChanged.AddListener(delegate {  SetResolution(resolutionDropdown.value);  });
-        // backButton.onClick.AddListener(CloseSettings);
-        // saveButton.onClick.AddListener(SavePreferences);
     }
-
-    // private void Awake()
-    // {
-    //     LoadPreferences();
-    // }
 
     public void SetResolution(int value)
     {
