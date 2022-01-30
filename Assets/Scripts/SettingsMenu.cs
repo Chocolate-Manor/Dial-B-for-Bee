@@ -31,7 +31,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetResolution(int value)
     {
-        int index = Math.Max(value, resolutions.Length - 1);
+        int index = Math.Min(value, resolutions.Length - 1);
         Resolution chosenResolution = resolutions[index];
         Screen.SetResolution(chosenResolution.width, chosenResolution.height, fullScreenToggle.isOn);
     }
@@ -68,7 +68,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void LoadPreferences()
     {
-        lensDistortionToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("LensDistortionPreference", 1));
+        lensDistortionToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("LensDistortionPreference", 0));
         fullScreenToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("FullScreenPreference", 1));
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolumePreference", 1.0f);
         soundEffectsSlider.value = PlayerPrefs.GetFloat("SoundEffectsVolumePreference", 1.0f);
