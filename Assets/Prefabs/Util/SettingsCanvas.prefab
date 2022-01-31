@@ -2370,7 +2370,7 @@ GameObject:
   - component: {fileID: 3383480816814236997}
   - component: {fileID: 6446656354804750752}
   m_Layer: 5
-  m_Name: Apply
+  m_Name: Reset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2423,7 +2423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Apply
+  m_text: Reset
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 64972f6c0caf01047ab364053449800f, type: 2}
   m_sharedMaterial: {fileID: -8623540200043878980, guid: 64972f6c0caf01047ab364053449800f, type: 2}
@@ -2538,7 +2538,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 900769765714450453}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: SavePreferences
+        m_MethodName: ResetSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3193,7 +3193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8201824946902643665}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41af06b04f75de0caa6bd7d37afda634, type: 3}
   m_Name: 
@@ -3206,7 +3206,7 @@ MonoBehaviour:
   resolutionDropdown: {fileID: 295933496540575713}
   audioMixer: {fileID: 24100000, guid: 265e9fabdae495e80934c747f78e3ae0, type: 2}
   backButton: {fileID: 541811710}
-  saveButton: {fileID: 6446656354804750752}
+  panelUI: {fileID: 8201824947253703921}
 --- !u!1 &8201824947253703921
 GameObject:
   m_ObjectHideFlags: 0

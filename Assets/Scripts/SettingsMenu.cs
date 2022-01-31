@@ -17,16 +17,33 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Button backButton;
-    [SerializeField] private Button saveButton;
+    [SerializeField] private GameObject panelUI;
     private Resolution[] resolutions;
-    
-    void Start()
+
+    private const int DefaultLensDistortion = 0;
+    private const int DefaultFullScreen = 1;
+    private const float DefaultMusicVolume = 1.0f;
+    private const float DefaultSoundEffectVolume = 1.0f;
+    private int defaultResolutionIndex;
+
+    private void Awake()
     {
         // Get all possible resolutions
         resolutionDropdown.ClearOptions();
         resolutions = Screen.resolutions;
         resolutionDropdown.AddOptions(resolutions.Select(resolution => resolution.ToString()).ToList());
+        defaultResolutionIndex = Screen.resolutions.Length - 1;
         LoadPreferences();
+    }
+    
+    //Script component is disabled by default in the prefab.
+    //Enable the script when activating the UI to use the update method.
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            backButton.onClick.Invoke();
+        }
     }
 
     public void SetResolution(int value)
@@ -68,18 +85,27 @@ public class SettingsMenu : MonoBehaviour
 
     public void LoadPreferences()
     {
-        lensDistortionToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("LensDistortionPreference", 0));
-        fullScreenToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("FullScreenPreference", 1));
-        musicSlider.value = PlayerPrefs.GetFloat("MusicVolumePreference", 1.0f);
-        soundEffectsSlider.value = PlayerPrefs.GetFloat("SoundEffectsVolumePreference", 1.0f);
-        resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference", Screen.resolutions.Length - 1);
+        lensDistortionToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("LensDistortionPreference", DefaultLensDistortion));
+        fullScreenToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("FullScreenPreference", DefaultFullScreen));
+        musicSlider.value = PlayerPrefs.GetFloat("MusicVolumePreference", DefaultMusicVolume);
+        soundEffectsSlider.value = PlayerPrefs.GetFloat("SoundEffectsVolumePreference", DefaultSoundEffectVolume);
+        resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference", defaultResolutionIndex);
+    }
+
+    public void ResetSettings()
+    {
+        lensDistortionToggle.isOn = Convert.ToBoolean(DefaultLensDistortion);
+        fullScreenToggle.isOn = Convert.ToBoolean(DefaultFullScreen);
+        musicSlider.value = DefaultMusicVolume;
+        soundEffectsSlider.value =  DefaultSoundEffectVolume;
+        resolutionDropdown.value = defaultResolutionIndex;
     }
 
     public void CloseSettings()
     {
-        //Load preferences before leaving the menu to discard any unwanted changes.
-        LoadPreferences();
-        gameObject.GetComponentInChildren<CanvasRenderer>().gameObject.SetActive(false);
+        SavePreferences();
+        panelUI.SetActive(false);
+        enabled = false;
     }
 
 }
