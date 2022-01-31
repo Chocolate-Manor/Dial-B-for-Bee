@@ -355,6 +355,7 @@ MonoBehaviour:
   text: {fileID: 3811722138240042043}
   image: {fileID: 3811722138320053138}
   projectorClick: {fileID: 8300000, guid: 21e9ba0d1a389944fadc27b19d8842e3, type: 3}
+  mainCameraProfile: {fileID: 11400000, guid: 9b1332725de158586bc9c36c784fea6d, type: 2}
 --- !u!225 &4793436324017826975
 CanvasGroup:
   m_ObjectHideFlags: 0

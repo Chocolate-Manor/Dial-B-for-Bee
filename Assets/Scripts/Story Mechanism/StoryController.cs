@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class StoryController : MonoBehaviour
@@ -12,6 +15,8 @@ public class StoryController : MonoBehaviour
 
     [SerializeField] private AudioClip projectorClick;
     
+    [SerializeField] private VolumeProfile mainCameraProfile;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,5 +79,17 @@ public class StoryController : MonoBehaviour
     {
         GameManager.Instance.PlaySoundEffect(projectorClick);
         gameObject.SetActive(false);
+    }
+    
+    private void OnEnable()
+    {
+        mainCameraProfile.TryGet(out LensDistortion lensDistortion);
+        lensDistortion.active = true;
+    }
+
+    private void OnDisable()
+    {
+        mainCameraProfile.TryGet(out LensDistortion lensDistortion);
+        lensDistortion.active = Convert.ToBoolean(PlayerPrefs.GetInt("LensDistortionPreference"));
     }
 }
