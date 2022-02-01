@@ -1705,9 +1705,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"DIAL B FOR
-
-    BEE"'
+  m_text: "Buzzing\nin \nBlack"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2eb1e575a50952543b0965cf048ee02a, type: 2}
   m_sharedMaterial: {fileID: 8620619399344716589, guid: 2eb1e575a50952543b0965cf048ee02a, type: 2}
