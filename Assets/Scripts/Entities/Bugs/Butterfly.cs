@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Butterfly : Bug, IProjectile
@@ -6,8 +7,11 @@ public class Butterfly : Bug, IProjectile
     [SerializeField] private float speed;
     [SerializeField] private AudioClip knifeHitSound;
 
+    public static event Action<Collision2D> OnCollision; 
+    
     private bool hasHit;
-
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +23,7 @@ public class Butterfly : Bug, IProjectile
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (hasHit == false)
-        {
-            hasHit = true;
-            OnHitBehavior(other);
-            OnHitDamage(other);
-        }
+        OnCollision(other); 
         PickMeUp(other.gameObject);
     }
 
