@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class SharpDamage : MonoBehaviour
+public class SharpDamage : MonoBehaviour, IProjectile
 {
     private bool hasHit;
-
+    private CollisionObserver co;
+    
     [SerializeField] private AudioClip knifeHitSound;
     
     // Start is called before the first frame update
@@ -18,25 +19,17 @@ public class SharpDamage : MonoBehaviour
 
     private void OnEnable()
     {
-        Butterfly.OnCollision += OnHitBehavior;
-        Butterfly.OnCollision += OnHitDamage; 
+        co = GetComponentInParent<CollisionObserver>();
+        co.OnCollision += OnHitBehavior;
+        co.OnCollision += OnHitDamage; 
     }
 
     private void OnDisable()
     {
-        Butterfly.OnCollision -= OnHitBehavior;
-        Butterfly.OnCollision -= OnHitDamage;
+        co.OnCollision -= OnHitBehavior;
+        co.OnCollision -= OnHitDamage;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (hasHit == false)
-        {
-            hasHit = true;
-            OnHitBehavior(other);
-            OnHitDamage(other);
-        }
-    }
     
     public void OnHitBehavior(Collision2D other)
     {
